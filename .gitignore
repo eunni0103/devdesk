@@ -60,3 +60,4 @@ node_modules
 src/main/resources
 
 /src/main/resources/
+gradle.properties
