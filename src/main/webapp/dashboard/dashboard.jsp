@@ -73,13 +73,13 @@
                 </div>
             </div>
             <div class="g-cal-weekdays">
+                <div>일</div>
                 <div>월</div>
                 <div>화</div>
                 <div>수</div>
                 <div>목</div>
                 <div>금</div>
                 <div>토</div>
-                <div>일</div>
             </div>
             <div class="g-cal-days" id="g-cal-days">
             </div>
@@ -556,8 +556,7 @@
             const firstDay = new Date(year, month, 1);
             const lastDay = new Date(year, month + 1, 0);
             const prevMonthLastDay = new Date(year, month, 0).getDate();
-            let firstDayIndex = firstDay.getDay() - 1;
-            if (firstDayIndex === -1) firstDayIndex = 6;
+            let firstDayIndex = firstDay.getDay();
 
             const calTitle = document.getElementById('g-cal-title');
             if (calTitle) calTitle.textContent = year + '년 ' + (month + 1) + '월';
@@ -577,6 +576,9 @@
                 const dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0');
                 let isToday = (dateStr === todayStr) ? ' today' : '';
 
+                // 🚨 추가됨: 일요일(0)이면 'sun' 클래스를 추가해서 빨갛게 만듭니다!
+                let isSun = new Date(year, month, i).getDay() === 0 ? ' sun' : '';
+
                 let dotsHTML = '';
                 if (eventCounts[dateStr]) {
                     dotsHTML = '<div class="g-dots">';
@@ -587,10 +589,10 @@
                     dotsHTML += '</div>';
                 }
 
-                daysHTML += `<div class="g-day-cell" onclick="location.href='${pageContext.request.contextPath}/calendar'">
-                                <div class="g-day-num\${isToday}">\${i}</div>
+                daysHTML += `<div class="g-day-cell" onclick="location.href='${CTX_PATH}/calendar'">
+                                <div class="g-day-num\${isToday}\${isSun}">\${i}</div>
                                 \${dotsHTML}
-                             </div>`;
+                              </div>`;
             }
 
             // 3. 달력 모양 유지를 위해 남은 빈칸은 다음 달 날짜로 채우기

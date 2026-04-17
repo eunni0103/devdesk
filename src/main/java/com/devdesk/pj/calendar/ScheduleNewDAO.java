@@ -365,7 +365,7 @@ public class ScheduleNewDAO {
                     // ==============================================================
                     long timeWindowMillis = 24 * 60 * 60 * 1000L; // 현재 세팅: 12시간
                     // 서버가 꺼져있던 시간 대비해 확인하는 코드입니다
-                    // long timeWindowMillis = 60 * 1000L; // 발표 시연용 세팅: 1분 (나중에 바꿔주세요)
+                   //  long timeWindowMillis = 60 * 1000L; // 발표 시연용 세팅: 1분 (나중에 바꿔주세요)
 
                     com.google.api.client.util.DateTime updatedMin =
                             new com.google.api.client.util.DateTime(System.currentTimeMillis() - timeWindowMillis);

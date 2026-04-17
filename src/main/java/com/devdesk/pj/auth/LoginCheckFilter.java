@@ -12,7 +12,6 @@ import java.util.Set;
 
 @WebFilter("/*")
 public class LoginCheckFilter implements Filter {
-
     // 로그인 없이 접근 가능한 경로 (정확히 일치)
     private static final Set<String> PUBLIC_EXACT = Set.of(
             "/", "/main", "/login", "/logout",

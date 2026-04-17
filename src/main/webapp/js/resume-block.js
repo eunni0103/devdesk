@@ -89,10 +89,10 @@ function openNewBlockModal() {
             <div class="form-group">
                 <label class="form-label">카테고리</label>
                 <select name="categoryId" class="form-select" required>
-                    <option value="shimei">지망동기</option>
-                    <option value="jikopr">자기PR</option>
-                    <option value="chosho">장단점</option>
-                    <option value="keireki">직무경력</option>
+                    <option value="shimei">지원 동기</option>
+                    <option value="jikopr">자기 PR</option>
+                    <option value="chosho">성격의 장단점</option>
+                    <option value="keireki">직무 경험</option>
                     <option value="other">그 외</option>
                 </select>
             </div>
@@ -104,7 +104,7 @@ function openNewBlockModal() {
             <div class="form-group">
                 <label class="form-label">내용</label>
                 <textarea name="content" class="form-textarea" rows="6"
-                          placeholder="일본어로 내용을 작성하세요..."
+                          placeholder="내용을 작성하세요..."
                           oninput="updateCharCount(this)" required></textarea>
                 <div style="text-align:right;margin-top:4px">
                     <span class="rb-char-count" id="modalCharCount">0자</span>
@@ -145,11 +145,11 @@ function openEditModal(blockId, categoryId, title, content, tags, charLimit) {
             <div class="form-group">
                 <label class="form-label">카테고리</label>
                 <select name="categoryId" class="form-select" id="editCat">
-                    <option value="shimei">志望動機</option>
-                    <option value="jikopr">自己PR</option>
-                    <option value="chosho">長所・短所</option>
-                    <option value="keireki">職務経歴</option>
-                    <option value="other">その他</option>
+                    <option value="shimei">지원 동기</option>
+                    <option value="jikopr">자기PR</option>
+                    <option value="chosho">성격의 장단점</option>
+                    <option value="keireki">직무 경험</option>
+                    <option value="other">기타</option>
                 </select>
             </div>
             <div class="form-group">
@@ -344,10 +344,10 @@ function copyCompose(catId) {
 /* ── 이력서 조합: 전체 복사 ── */
 function copyAllCompose() {
     const categories = [
-        {id: 'shimei', label: '志望動機'},
-        {id: 'jikopr', label: '自己PR'},
-        {id: 'chosho', label: '長所・短所'},
-        {id: 'keireki', label: '職務経歴'}
+        {id: 'shimei', label: '지원 동기'},
+        {id: 'jikopr', label: '자기 PR'},
+        {id: 'chosho', label: '성격의 장단점'},
+        {id: 'keireki', label: '직무 경험'}
     ];
 
     let texts = [];

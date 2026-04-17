@@ -28,7 +28,7 @@ public class QuartzListener implements ServletContextListener {
             // [발표용 설정] 0 * * * * ? : 1분마다 실행
             String cronExpression = "0 0 */12 * * ?";  // <- 기본세팅
             // ↑ 서버 시연할때 수정할 부분 서버가 (현재세팅 12시간)에 한번씩 돌아서 구글 캘린더에 접속을 합니다
-            //    String cronExpression = "0/30 * * * * ?";         // 시연할때 세팅
+           //  String cronExpression = "0/30 * * * * ?";         // 시연할때 세팅
 
             Trigger trigger = TriggerBuilder.newTrigger()
                     .withIdentity("googleSyncTrigger", "calendarGroup")

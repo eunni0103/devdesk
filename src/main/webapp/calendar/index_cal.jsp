@@ -111,7 +111,8 @@
     </div>
 </div>
 
-<%-- 이부분이.. 안나옴.... ㅠㅠ base.css의 modal-overlay 부분--%>
+
+
 <div id="modal-backdrop"
      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:999;"></div>
 
@@ -619,7 +620,7 @@
 
             var firstDay = new Date(year, month, 1), lastDay = new Date(year, month + 1, 0);
             var prevLast = new Date(year, month, 0).getDate();
-            var firstIdx = (firstDay.getDay() + 6) % 7;
+            var firstIdx = firstDay.getDay();
             var html = '';
 
             for (var i = firstIdx; i > 0; i--)
