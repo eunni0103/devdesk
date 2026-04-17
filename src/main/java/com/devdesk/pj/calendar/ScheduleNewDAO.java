@@ -16,14 +16,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Schedule_newDAO {
-    public static final Schedule_newDAO SCAO = new Schedule_newDAO();
+public class ScheduleNewDAO {
+    public static final ScheduleNewDAO SCAO = new ScheduleNewDAO();
 
-    private Schedule_newDAO() {
+    private ScheduleNewDAO() {
     }
 
-    public ArrayList<Schedule_newDTO> getCalendarEvents(int memberId) {
-        ArrayList<Schedule_newDTO> list = new ArrayList<>();
+    public ArrayList<ScheduleNewDTO> getCalendarEvents(int memberId) {
+        ArrayList<ScheduleNewDTO> list = new ArrayList<>();
 
         String sql = "SELECT s.SCHEDULE_ID, s.SCHEDULE_DATE, s.SCHEDULE_TIME, s.INTERVIEW_TYPE, s.MEMO, " +
                 "s.COMPANY_NAME, a.POSITION, a.STAGE " +
@@ -39,7 +39,7 @@ public class Schedule_newDAO {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Schedule_newDTO dto = new Schedule_newDTO(
+                    ScheduleNewDTO dto = new ScheduleNewDTO(
                             rs.getInt("SCHEDULE_ID"),
                             rs.getDate("SCHEDULE_DATE"),
                             rs.getString("SCHEDULE_TIME"),

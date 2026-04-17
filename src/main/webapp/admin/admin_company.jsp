@@ -252,4 +252,4 @@
 
 <%-- JS 연결 --%>
 <script>const contextPath = '${pageContext.request.contextPath}';</script>
-<script src="${pageContext.request.contextPath}/js/admin/admin_company.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-company.js"></script>

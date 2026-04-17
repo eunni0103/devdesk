@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace_ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace-ui.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/board-all.css">
 <div class="write-container">

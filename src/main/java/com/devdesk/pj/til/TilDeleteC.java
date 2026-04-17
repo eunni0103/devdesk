@@ -7,25 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "TilupdateC", value = "/til_update")
-public class TilupdateC extends HttpServlet {
+@WebServlet(name = "TilDeleteC", value = "/til_delete")
+public class TilDeleteC extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        TilDAO.updateTil(request);
+        TilDAO.deleteTil(request);
         response.sendRedirect("til-list");
 
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-
-        TilDAO.updateTil(request);
-        request.setAttribute("content", "/dashboard/dashboard.jsp");
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
 

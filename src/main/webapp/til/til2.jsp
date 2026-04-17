@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<link rel="stylesheet" href="css/workspace_ui.css">
+<link rel="stylesheet" href="css/workspace-ui.css">
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/til.css">

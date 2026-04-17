@@ -1,4 +1,4 @@
-package com.devdesk.pj.Like;
+package com.devdesk.pj.like;
 
 import lombok.Data;
 

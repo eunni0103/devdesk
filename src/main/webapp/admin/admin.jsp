@@ -162,7 +162,7 @@
 </script>
 
 <%-- 차트 그리는 JS --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_charts.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-charts.js"></script>
 
-<%-- 🌟 상세 모달창을 띄우기 위해 admin_member.js 도 추가로 불러옵니다! --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_member.js"></script>
+<%-- 🌟 상세 모달창을 띄우기 위해 admin-member.js 도 추가로 불러옵니다! --%>
+<script src="${pageContext.request.contextPath}/js/admin/admin-member.js"></script>

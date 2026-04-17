@@ -97,4 +97,4 @@
 </div>
 
 <%-- 나중에 추가할 자바스크립트 연결 --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_board.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-board.js"></script>

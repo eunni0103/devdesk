@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ApplicationinsertC", value = "/application-insert")
-public class ApplicationinsertC extends HttpServlet {
+@WebServlet(name = "ApplicationInsertC", value = "/application-insert")
+public class ApplicationInsertC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     }

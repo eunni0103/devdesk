@@ -10,7 +10,7 @@ public class CalendarSyncJob implements Job {
         System.out.println("🔄 [Quartz Job] 구글 캘린더 동기화 작업 실행 중...");
         try {
             // DAO에 만들어둔 동기화 메서드 호출
-            Schedule_newDAO.SCAO.syncGoogleCalendarToDB();
+            ScheduleNewDAO.SCAO.syncGoogleCalendarToDB();
         } catch (Exception e) {
             System.err.println("❌ [Quartz Job] 동기화 중 에러 발생: " + e.getMessage());
         }

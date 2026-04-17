@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="ctx" content="${pageContext.request.contextPath}">
     <title>이력서 블록 라이브러리 — DevDesk</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace_ui.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace-ui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/til.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/resume-block.css">

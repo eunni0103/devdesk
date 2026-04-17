@@ -3,8 +3,8 @@ package com.devdesk.pj.til;
 import com.devdesk.pj.application.ApplicationDAO;
 import com.devdesk.pj.user.MemberDTO;
 // 🌟 1. 달력 데이터를 가져오기 위해 필요한 import 추가!
-import com.devdesk.pj.calendar.Schedule_newDAO;
-import com.devdesk.pj.calendar.Schedule_newDTO;
+import com.devdesk.pj.calendar.ScheduleNewDAO;
+import com.devdesk.pj.calendar.ScheduleNewDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +37,7 @@ public class TilC extends HttpServlet {
         int memberId = loginUser.getMember_id();
 
         // 🌟 2. [미니 캘린더용] 내 면접 일정 DB에서 싹 다 가져와서 세팅하기!
-        ArrayList<Schedule_newDTO> schList = Schedule_newDAO.SCAO.getCalendarEvents(memberId);
+        ArrayList<ScheduleNewDTO> schList = ScheduleNewDAO.SCAO.getCalendarEvents(memberId);
         request.setAttribute("schList", schList);
         // 🌟 (이제 사이드바 JSP가 이 schList를 받아서 점을 톡톡톡 찍어줄 겁니다!)
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <title>DevDesk - 비밀번호 찾기</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/account.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/find_password.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/find-password.css">
 </head>
 <body class="account-body">
 
@@ -111,7 +111,7 @@
     }
 </script>
 
-<script src="${pageContext.request.contextPath}/js/user/find_password.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/find-password.js"></script>
 
 <script>
     // 2. 모달창 띄우기 함수 (CSS 클래스 버전에 맞춤)

@@ -8,7 +8,7 @@
 
 <script src="${pageContext.request.contextPath}/js/company/company-search-modal.js" defer></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/company/company-search-modal.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace_ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace-ui.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar.css">
 

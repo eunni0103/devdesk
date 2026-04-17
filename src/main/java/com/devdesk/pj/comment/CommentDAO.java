@@ -1,4 +1,4 @@
-package com.devdesk.pj.Comment;
+package com.devdesk.pj.comment;
 
 import com.devdesk.pj.main.DBManager_new;
 

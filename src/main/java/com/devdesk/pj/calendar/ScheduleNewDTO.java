@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Schedule_newDTO {
+public class ScheduleNewDTO {
     // SCHEDULE 테이블 데이터
     private int schedule_id;
     private java.sql.Date schedule_date;

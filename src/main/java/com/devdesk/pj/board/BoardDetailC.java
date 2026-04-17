@@ -1,7 +1,7 @@
 package com.devdesk.pj.board;
 
-import com.devdesk.pj.Comment.CommentDAO;
-import com.devdesk.pj.Like.LikeDAO;
+import com.devdesk.pj.comment.CommentDAO;
+import com.devdesk.pj.like.LikeDAO;
 import com.devdesk.pj.user.MemberDTO;
 
 import javax.servlet.ServletException;

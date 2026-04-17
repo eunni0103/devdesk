@@ -18,7 +18,7 @@ public class CalendarAddC extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         try {
-            Schedule_newDAO.SCAO.addSchedule(request);
+            ScheduleNewDAO.SCAO.addSchedule(request);
 
             response.setContentType("text/plain; charset=UTF-8");
             response.getWriter().write("success");

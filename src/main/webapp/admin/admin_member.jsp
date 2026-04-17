@@ -162,4 +162,4 @@
 </div>
 
 <%-- 자바스크립트 연결 --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_member.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-member.js"></script>

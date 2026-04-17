@@ -23,7 +23,7 @@ public class CalendarDeleteC extends HttpServlet {
 
         try {
             int scheduleId = Integer.parseInt(reqId);
-            Schedule_newDAO.SCAO.deleteSchedule(scheduleId);
+            ScheduleNewDAO.SCAO.deleteSchedule(scheduleId);
 
             response.setContentType("text/plain; charset=UTF-8");
             response.getWriter().write("success");

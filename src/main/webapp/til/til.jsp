@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIL — 취뽀 워크스페이스</title>
-    <link rel="stylesheet" href="css/workspace_ui.css">
+    <link rel="stylesheet" href="css/workspace-ui.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/til.css">
 </head>

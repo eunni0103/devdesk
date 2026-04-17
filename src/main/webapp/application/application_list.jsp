@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
-<link rel="stylesheet" href="${ctx}/css/application_list.css">
+<link rel="stylesheet" href="${ctx}/css/application-list.css">
 <link rel="stylesheet" href="${ctx}/css/index.css">
 <link rel="stylesheet" href="${ctx}/css/resume-block.css">
 <link rel="stylesheet" href="${ctx}/css/index.css">
@@ -231,4 +231,4 @@
 
 <!-- JS는 모달 HTML 아래에서 로드 → DOM 순서 보장 -->
 <script src="${ctx}/js/company/company-search-modal.js"></script>
-<script src="${ctx}/js/application_list.js"></script>
+<script src="${ctx}/js/application-list.js"></script>

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "calendarC", value = "/calendar")
-public class Calendar_newC extends HttpServlet {
+public class CalendarNewC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -25,10 +25,10 @@ public class Calendar_newC extends HttpServlet {
 
         int memberId = user.getMember_id();
 
-        ArrayList<Schedule_newDTO> schList = Schedule_newDAO.SCAO.getCalendarEvents(memberId);
+        ArrayList<ScheduleNewDTO> schList = ScheduleNewDAO.SCAO.getCalendarEvents(memberId);
         request.setAttribute("list", schList);
 
-        ArrayList<String> companyList = Schedule_newDAO.SCAO.getAllCompanyNames();
+        ArrayList<String> companyList = ScheduleNewDAO.SCAO.getAllCompanyNames();
         request.setAttribute("companyList", companyList);
 
         request.setAttribute("content", "calendar/index_cal.jsp");

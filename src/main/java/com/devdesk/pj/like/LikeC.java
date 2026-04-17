@@ -1,4 +1,4 @@
-package com.devdesk.pj.Like;
+package com.devdesk.pj.like;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +10,12 @@ import java.io.PrintWriter;
 
 import com.google.gson.Gson;
 
-@WebServlet(name = "LikeDelC", value = "/like_del")
-public class LikeDelC extends HttpServlet {
+@WebServlet(name = "LikeC", value = "/like")
+public class LikeC extends HttpServlet {
     private LikeDAO likeDAO = new LikeDAO();
     private Gson gson = new Gson();
 
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=UTF-8");
 

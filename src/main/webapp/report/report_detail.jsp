@@ -223,5 +223,5 @@
     </div>
 
     <%-- 🌟 새로 만든 JS 파일 연결! --%>
-    <script src="${pageContext.request.contextPath}/js/admin/admin_report_detail.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/admin-report-detail.js"></script>
 </div>
