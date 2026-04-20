@@ -18,7 +18,7 @@ public class LoginCheckFilter implements Filter {
             "/account", "/account-done",
             "/google-login", "/find-password",
             "/user-checkId", "/user-checkNickname",
-            "/review", "/review/detail", "/review/filter/ajax",
+            "/review", "/review/filter/ajax",
             "/company-search", "/company-search/ajax", "/company-detail",
             "/board", "/BoardDetailC", "/member-posts",
             "/like", "/review/like",

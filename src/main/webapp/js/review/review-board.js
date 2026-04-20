@@ -80,6 +80,18 @@ function renderReviews(reviews) {
             + '      <span class="info-value">' + interviewerStr + '</span>'
             + '      <span class="info-label">연락 방법</span>'
             + '      <span class="tag">' + (contactText[r.reviewContactMethod] || '미응답') + '</span>'
+            + (r.reviewRating > 0 ? '    <span class="info-label">기업평점</span>'
+                + '    <span class="card-rating" style="display: inline-flex; align-items: center; gap: 1px;">'
+                + (function () {
+                    let stars = '';
+                    for (let s = 1; s <= 5; s++) {
+                        let isOn = s <= r.reviewRating;
+                        stars += '<span class="card-star' + (isOn ? ' on' : '') + '" style="font-size: 0.9em; color: ' + (isOn ? '#ffd700' : '#ddd') + ';">★</span>';
+                    }
+                    return stars;
+                })()
+                + '      <span class="card-rating-num" style="margin-left: 4px; font-size: 0.85em; color: #666;">' + r.reviewRating + '.0</span>'
+                + '    </span>' : '')
             + '    </div>'
             + '    <div class="info-row">'
             + '      <span class="info-label">분위기</span>'
@@ -90,21 +102,11 @@ function renderReviews(reviews) {
             + '  </div>'
             + '</div>'
             + '<div class="read-more-container">'
-            + '  <a href="' + contextPath + '/review/detail?reviewId=' + r.reviewId + '" class="read-more-btn">계속 읽기</a>'
+            + '  <a href="' + contextPath + '/review/detail?reviewId="' + r.reviewId + '" class="read-more-btn">계속 읽기</a>'
             + '</div>'
             + '<div class="card-footer">'
             + '  <div class="footer-left">'
             + '    <span class="card-like">♥ <span class="like-num">' + r.reviewLikeCount + '</span></span>'
-            + (r.reviewRating > 0 ? '    <span class="card-rating">'
-                + (function () {
-                    let stars = '';
-                    for (let s = 1; s <= 5; s++) {
-                        stars += '<span class="card-star ' + (s <= r.reviewRating ? 'on' : '') + '">★</span>';
-                    }
-                    return stars;
-                })()
-                + '      <span class="card-rating-num">' + r.reviewRating + '.0</span>'
-                + '    </span>' : '')
             + '  </div>'
             + '  <div class="footer-right"><span>' + dateStr + '</span></div>'
             + '</div>'

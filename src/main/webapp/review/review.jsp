@@ -79,6 +79,16 @@
                                 <c:otherwise>${r.reviewContactMethod}</c:otherwise>
                             </c:choose>
                         </span>
+                        <c:if test="${r.reviewRating > 0}">
+                            <span class="info-label">기업평점</span>
+                            <span class="card-rating" style="display: inline-flex; align-items: center; gap: 1px;">
+                                <c:forEach begin="1" end="5" var="i">
+                                    <span class="card-star ${i <= r.reviewRating ? 'on' : ''}" 
+                                          style="font-size: 0.9em; color: ${i <= r.reviewRating ? '#ffd700' : '#ddd'};">★</span>
+                                </c:forEach>
+                                <span class="card-rating-num" style="margin-left: 4px; font-size: 0.85em; color: #666;">${r.reviewRating}.0</span>
+                            </span>
+                        </c:if>
                         </div>
                         <div class="info-row">
                             <span class="info-label">분위기</span>
@@ -114,14 +124,6 @@
                 <div class="card-footer">
                     <div class="footer-left">
                         <span class="card-like">♥ <span class="like-num">${r.reviewLikeCount}</span></span>
-                        <c:if test="${r.reviewRating > 0}">
-                            <span class="card-rating">
-                                <c:forEach begin="1" end="5" var="i">
-                                    <span class="card-star ${i <= r.reviewRating ? 'on' : ''}">★</span>
-                                </c:forEach>
-                                <span class="card-rating-num">${r.reviewRating}.0</span>
-                            </span>
-                        </c:if>
                     </div>
                     <div class="footer-right">
                         <span><fmt:formatDate value="${r.reviewCreatedDate}" pattern="yyyy년 M월 d일"/></span>
