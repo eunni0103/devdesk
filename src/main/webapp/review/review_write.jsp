@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review/review-write.css">
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/company/company-search-modal.js"></script>
 
 <div class="write-wrap">
 
@@ -27,12 +26,10 @@
                     <div class="company-badge">면접 후기 작성</div>
                     <div class="field-group">
                         <label class="field-label required">기업 검색</label>
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <input type="text" id="selectedCompanyName" readonly placeholder="기업을 선택해주세요"
-                                   style="cursor:pointer;" onclick="openCompanyModal()"/>
-                            <button type="button" onclick="openCompanyModal()" class="btn-search">기업 선택</button>
+                        <div style="position:relative;">
+                            <input type="text" id="companySearchInput" placeholder="기업명을 입력하여 검색하세요" autocomplete="off"/>
+                            <div id="companyDropdown" class="company-dropdown"></div>
                         </div>
-                        <jsp:include page="/company/company-search/company_search_modal.jsp"/>
                         <input type="hidden" name="companyId" id="selectedCompanyId"/>
                     </div>
                 </div>
