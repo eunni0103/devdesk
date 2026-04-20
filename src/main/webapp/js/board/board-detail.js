@@ -257,12 +257,34 @@ document.addEventListener("DOMContentLoaded", () => {
     // Supabase 이미지 URL 변환
     const textBox = document.querySelector('.text-box');
     if (textBox) {
-        const supabaseUrlPattern = /(https:\/\/[a-zA-Z0-9-]+\.supabase\.co\/storage\/v1\/object\/public\/upload\/file\/[^\s\)\]\}]+)/g;
-        textBox.innerHTML = textBox.innerHTML.replace(supabaseUrlPattern, function (url) {
+        // innerHTML 대신 textContent를 사용해 HTML 엔티티 디코딩 문제를 방지
+        const rawText = textBox.textContent;
+        const supabaseUrlPattern = /https:\/\/[a-zA-Z0-9-]+\.supabase\.co\/storage\/v1\/object\/public\/upload\/file\/[^\s\)\]\}]+/g;
+
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\n/g, '<br>');
+        }
+
+        let html = '';
+        let lastIndex = 0;
+        let match;
+        supabaseUrlPattern.lastIndex = 0;
+
+        while ((match = supabaseUrlPattern.exec(rawText)) !== null) {
+            html += escapeHtml(rawText.slice(lastIndex, match.index));
+            const url = match[0];
             if (/\.(jpg|jpeg|png|gif|webp)$/i.test(url)) {
-                return `<img src="${url}" alt="uploaded image" style="max-width: 100%; height: auto; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">`;
+                html += `<img src="${url}" alt="uploaded image" style="max-width: 100%; height: auto; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">`;
+            } else {
+                html += escapeHtml(url);
             }
-            return url;
-        });
+            lastIndex = match.index + url.length;
+        }
+        html += escapeHtml(rawText.slice(lastIndex));
+        textBox.innerHTML = html;
     }
 });

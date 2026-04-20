@@ -4,13 +4,11 @@
 
 <title>DevDesk - 내 면접 일정</title>
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet'/>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
 
 <script src="${pageContext.request.contextPath}/js/company/company-search-modal.js" defer></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/company/company-search-modal.css">
-<%-- base.css 선민추가 --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/workspace-ui.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar.css">
 
@@ -21,8 +19,6 @@
 
     <%-- 1. 상단 스크롤 영역 (일정 전용) --%>
     <div class="sidebar-nav">
-        <span class="nav-section-label">일정</span>
-
         <%-- 이번 주 일정 토글 버튼 --%>
         <div class="week-nav-toggle" id="weekToggle">
             <span class="nav-icon">📅</span>
@@ -115,11 +111,12 @@
     </div>
 </div>
 
-<%-- 이부분이.. 안나옴.... ㅠㅠ base.css의 modal-overlay 부분--%>
+
+
 <div id="modal-backdrop"
      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:999;"></div>
 
-<jsp:include page="/company/company-search/companySearchModal.jsp"/>
+<jsp:include page="/company/company-search/company_search_modal.jsp"/>
 
 <div id="schedule-modal" style="display:none;">
     <h3 id="modal-title">새 일정 추가</h3>
@@ -127,7 +124,7 @@
     <input type="hidden" id="form-appId" value="1">
     <input type="hidden" id="contextPath" value="${pageContext.request.contextPath}"/>
 
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>기업</label>
         <div style="display:flex;align-items:center;gap:8px;">
             <input type="text" id="selectedCompanyName" readonly placeholder="기업을 선택해주세요"
@@ -137,19 +134,19 @@
         </div>
         <input type="hidden" name="companyId" id="selectedCompanyId"/>
     </div>
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>지원 직무</label>
         <input type="text" id="form-position" placeholder="ex) 백엔드 개발자">
     </div>
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>서류 지원 일자 <span style="font-weight:400;color:var(--text3);">(선택)</span></label>
         <input type="date" id="form-apply-date">
     </div>
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>면접 날짜</label>
         <input type="date" id="form-date">
     </div>
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>시간</label>
         <div style="display:flex;gap:8px;">
             <select id="form-hour" style="flex:1;">
@@ -176,7 +173,7 @@
             </select>
         </div>
     </div>
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>면접 전형</label>
         <select id="form-type">
             <option value="코딩테스트">코딩테스트</option>
@@ -187,7 +184,7 @@
         </select>
         <input type="text" id="form-type-direct" placeholder="ex) SPI, 인성면접" style="display:none;margin-top:6px;">
     </div>
-    <div class="form-group">
+    <div class="cal-form-group">
         <label>메모</label>
         <input type="text" id="form-memo">
     </div>
@@ -197,14 +194,14 @@
     </div>
 </div>
 
-<div class="modal-overlay" id="customAlertModal" style="display:none;">
-    <div class="modal-box">
+<div class="cal-modal-overlay" id="customAlertModal" style="display:none;">
+    <div class="cal-modal-box">
         <p id="alertMessage"></p>
         <button class="btn-save" id="btn-alert-ok" style="width:100%;">확인</button>
     </div>
 </div>
-<div class="modal-overlay" id="customConfirmModal" style="display:none;">
-    <div class="modal-box">
+<div class="cal-modal-overlay" id="customConfirmModal" style="display:none;">
+    <div class="cal-modal-box">
         <p style="font-weight:700;color:#e53e3e;margin-bottom:6px;">정말 삭제하시겠습니까?</p>
         <p style="font-size:13px;color:var(--text3);margin-bottom:20px;">삭제된 일정은 복구할 수 없습니다.</p>
         <div style="display:flex;gap:10px;">
@@ -283,38 +280,17 @@
 
             eventClick: function (info) {
                 currentEvent = info.event;
-                var x = info.jsEvent.clientX, y = info.jsEvent.clientY;
+                var x = info.jsEvent.pageX, y = info.jsEvent.pageY;
                 $('#pop-title').text(currentEvent.title);
                 $('#pop-position').text(currentEvent.extendedProps.position || '미정');
                 $('#pop-date').text(currentEvent.startStr);
                 $('#pop-time').text(currentEvent.extendedProps.time || '미정');
                 $('#pop-type').text(currentEvent.extendedProps.type || '-');
                 $('#pop-memo').text(currentEvent.extendedProps.memo || '-');
-                
-                var $pop = $('#event-popup');
-                // 높이 계산을 위해 임시로 렌더링
-                $pop.css({display: 'block', visibility: 'hidden'});
-                var popW = $pop.outerWidth() || 260;
-                var popH = $pop.outerHeight() || 200;
-                var winW = $(window).width();
-                var winH = $(window).height();
-                $pop.css({display: 'none', visibility: 'visible'});
-
-                var finalTop = y + 15;
-                if (finalTop + popH > winH) {
-                    finalTop = y - popH - 15; // 팝업을 클릭한 마우스 위로 올림
-                    if (finalTop < 0) finalTop = 15; // 화면 위를 벗어나면 여백 15px로 제한
-                }
-
-                var finalLeft = x + 15;
-                if (finalLeft + popW > winW) {
-                    finalLeft = x - popW - 15; // 팝업을 클릭한 마우스 왼쪽으로
-                    if (finalLeft < 0) finalLeft = 15; // 화면 왼쪽 벗어나면 여백 15px로 제한
-                }
-
-                $pop.css({
-                    top: finalTop + 'px',
-                    left: finalLeft + 'px'
+                var popW = 260, winW = $(window).width();
+                $('#event-popup').css({
+                    top: y + 15 + 'px',
+                    left: (x + 15 + popW > winW ? x - popW - 15 : x + 15) + 'px'
                 }).fadeIn(150);
             },
 
@@ -644,7 +620,7 @@
 
             var firstDay = new Date(year, month, 1), lastDay = new Date(year, month + 1, 0);
             var prevLast = new Date(year, month, 0).getDate();
-            var firstIdx = (firstDay.getDay() + 6) % 7;
+            var firstIdx = firstDay.getDay();
             var html = '';
 
             for (var i = firstIdx; i > 0; i--)

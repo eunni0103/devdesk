@@ -16,7 +16,7 @@ public class BoardAddC extends HttpServlet {
         //일
 //        BoardDAO.addBoard(request);
         // loginCheck
-        request.setAttribute("content", "board/boardAdd.jsp");
+        request.setAttribute("content", "board/board_add.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

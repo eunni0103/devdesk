@@ -1,7 +1,7 @@
 package com.devdesk.pj.board;
 
-import com.devdesk.pj.Comment.CommentDAO;
-import com.devdesk.pj.Like.LikeDAO;
+import com.devdesk.pj.comment.CommentDAO;
+import com.devdesk.pj.like.LikeDAO;
 import com.devdesk.pj.user.MemberDTO;
 
 import javax.servlet.ServletException;
@@ -37,7 +37,7 @@ public class BoardDetailC extends HttpServlet {
 
         // 삭제된 게시글 처리
         if (request.getAttribute("board") == null) {
-            request.setAttribute("content", "board/boardDeleted.jsp");
+            request.setAttribute("content", "board/board_deleted.jsp");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
@@ -61,7 +61,7 @@ public class BoardDetailC extends HttpServlet {
         // 5. 댓글 리스트 조회
         CommentDAO.getComment(request, boardId);
 
-        request.setAttribute("content", "board/boardDetail.jsp");
+        request.setAttribute("content", "board/board_detail.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

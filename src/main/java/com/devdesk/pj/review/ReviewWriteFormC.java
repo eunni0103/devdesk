@@ -21,7 +21,7 @@ public class ReviewWriteFormC extends HttpServlet {
             request.setAttribute("company", company);
         }
 
-        request.setAttribute("content", "/review/reviewWrite.jsp");
+        request.setAttribute("content", "/review/review_write.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

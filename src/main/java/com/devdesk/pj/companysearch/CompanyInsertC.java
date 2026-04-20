@@ -12,7 +12,7 @@ public class CompanyInsertC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        request.setAttribute("content", "/company/company-search/companyInsert.jsp");
+        request.setAttribute("content", "/company/company-search/company_insert.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

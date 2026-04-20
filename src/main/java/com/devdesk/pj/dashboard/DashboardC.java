@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.devdesk.pj.calendar.Schedule_newDAO;
-import com.devdesk.pj.calendar.Schedule_newDTO;
+import com.devdesk.pj.calendar.ScheduleNewDAO;
+import com.devdesk.pj.calendar.ScheduleNewDTO;
 
 @WebServlet("/dashboard")
 public class DashboardC extends HttpServlet {
@@ -78,8 +78,8 @@ public class DashboardC extends HttpServlet {
         request.setAttribute("recentTils", rawTils);
 
         // 예정 일정 가공
-        Schedule_newDAO scheduleDao = Schedule_newDAO.SCAO;
-        ArrayList<Schedule_newDTO> rawSchedules = scheduleDao.getCalendarEvents(memberId);
+        ScheduleNewDAO scheduleDao = ScheduleNewDAO.SCAO;
+        ArrayList<ScheduleNewDTO> rawSchedules = scheduleDao.getCalendarEvents(memberId);
 
         // 🌟🌟🌟 미니 캘린더용 데이터 전송 (이 한 줄이 핵심입니다!) 🌟🌟🌟
         // 위에서 가져온 rawSchedules를 미니 캘린더가 냠냠 먹을 수 있게 "schList"라는 이름으로 보냅니다!
@@ -114,7 +114,7 @@ public class DashboardC extends HttpServlet {
         todayMidnight.set(java.util.Calendar.SECOND, 0);
         todayMidnight.set(java.util.Calendar.MILLISECOND, 0);
 
-        for (Schedule_newDTO raw : rawSchedules) {
+        for (ScheduleNewDTO raw : rawSchedules) {
             if (raw.getSchedule_date() == null) continue;
 
             // 오늘 자정보다 이전 날짜만 제외
@@ -140,7 +140,7 @@ public class DashboardC extends HttpServlet {
 
         request.setAttribute("upcomingSchedules", upcomingSchedules);
 
-        for (Schedule_newDTO r : rawSchedules) {
+        for (ScheduleNewDTO r : rawSchedules) {
             System.out.println("  날짜: " + r.getSchedule_date()
                     + " / 회사: " + r.getCompany_name()
                     + " / 타입: [" + r.getInterview_type() + "]");

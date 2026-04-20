@@ -4,7 +4,7 @@
 <%-- 🌟 분리한 외부 CSS 파일 연결 --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin.css">
 <%-- 🌟 상세 모달창 디자인을 위해 회원관리용 CSS도 같이 불러옵니다! --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin_member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin-member.css">
 
 <%-- 🌟 Chart.js 라이브러리 연결 --%>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="card">
-                    
+
                     <div class="card-title">오늘의 신규 가입</div>
                     <div class="card-value" style="color: var(--success-color);">+ ${todayNewMembers} 명</div>
                 </div>
@@ -162,7 +162,7 @@
 </script>
 
 <%-- 차트 그리는 JS --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_charts.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-charts.js"></script>
 
-<%-- 🌟 상세 모달창을 띄우기 위해 admin_member.js 도 추가로 불러옵니다! --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_member.js"></script>
+<%-- 🌟 상세 모달창을 띄우기 위해 admin-member.js 도 추가로 불러옵니다! --%>
+<script src="${pageContext.request.contextPath}/js/admin/admin-member.js"></script>

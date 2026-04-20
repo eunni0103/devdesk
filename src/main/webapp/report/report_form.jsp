@@ -25,7 +25,7 @@
         </div>
 
         <%-- REPO_REASON --%>
-        <div class="form-group" style="margin-bottom: 20px;">
+        <div class="board-form-group" style="margin-bottom: 20px;">
             <label style="display: block; margin-bottom: 8px; font-weight: 600;">신고 사유</label>
             <select name="repoReason" id="reportReason"
                     style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ddd;" required>
@@ -39,7 +39,7 @@
         </div>
 
         <%-- REPO_CONTENT --%>
-        <div class="form-group" style="margin-bottom: 20px;">
+        <div class="board-form-group" style="margin-bottom: 20px;">
             <label style="display: block; margin-bottom: 8px; font-weight: 600;">상세 내용 (최소 10자)</label>
             <textarea name="repoContent" id="reportContent" maxlength="500" rows="6"
                       placeholder="신고 내용을 구체적으로 입력해 주세요."

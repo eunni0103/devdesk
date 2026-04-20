@@ -37,6 +37,9 @@ public class SupabaseDAO {
                 input.close();
             }
             String SUPABASE_URL = prop.getProperty("supabase.url");
+            if (SUPABASE_URL != null) {
+                SUPABASE_URL = SUPABASE_URL.replaceAll("/+$", "");
+            }
             String API_KEY = prop.getProperty("service.role");
             Part filePart = request.getPart("file");
 

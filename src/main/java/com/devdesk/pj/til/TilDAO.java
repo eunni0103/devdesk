@@ -163,6 +163,8 @@ public class TilDAO {
                     vo.setTilId(rs.getString("til_id"));
                     vo.setTitle(rs.getString("title"));
                     vo.setTag(rs.getString("tag"));
+                    vo.setContent(rs.getString("content"));
+                    vo.setStudyTime(rs.getDouble("study_time"));
                     vo.setCreatedAt(rs.getString("created_date"));
                     list.add(vo);
                 }

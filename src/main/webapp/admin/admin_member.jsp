@@ -3,7 +3,7 @@
 
 <%-- 기존 대시보드 CSS와 회원관리 전용 CSS 연결 --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin_member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin-member.css">
 
 <div class="admin-wrapper">
 
@@ -162,4 +162,4 @@
 </div>
 
 <%-- 자바스크립트 연결 --%>
-<script src="${pageContext.request.contextPath}/js/admin/admin_member.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-member.js"></script>

@@ -15,9 +15,11 @@ public class TilV0 {
     private String tagBg;
     private String timeAgo;
 
-    public void setTagColor(String hashtag) {
+    public void setTagColor(String tagColor) {
+        this.tagColor = tagColor;
     }
 
-    public void setTagBg(String orDefault) {
+    public void setTagBg(String tagBg) {
+        this.tagBg = tagBg;
     }
 }

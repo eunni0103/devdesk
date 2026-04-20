@@ -43,6 +43,21 @@
     box-sizing: border-box;
 }
 
+/* ===== 스크롤바 ===== */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-secondary);
+    border-radius: 3px;
+}
+
 body {
     margin: 0;
     padding: 0;

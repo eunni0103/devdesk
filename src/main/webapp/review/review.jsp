@@ -10,7 +10,7 @@
 <script src="${pageContext.request.contextPath}/js/company/company-search-modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/review/review-board.js"></script>
 
-<jsp:include page="/company/company-search/companySearch.jsp"/>
+<jsp:include page="/company/company-search/company_search.jsp"/>
 
 
 <div class="board-container">
@@ -40,7 +40,6 @@
             <select id="sortOrder">
                 <option value="latest">최신순</option>
                 <option value="like_desc">추천순</option>
-                <option value="difficulty_asc">난이도 낮은순</option>
             </select>
         </div>
         <a href="${pageContext.request.contextPath}/review/write" class="btn-write">
@@ -137,4 +136,4 @@
 </div>
 
 
-<jsp:include page="/company/company-search/companySearchModal.jsp"/>
+<jsp:include page="/company/company-search/company_search_modal.jsp"/>

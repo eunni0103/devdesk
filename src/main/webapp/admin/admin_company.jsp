@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin_member.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin_company.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin-member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin-company.css">
 
 <div class="admin-wrapper">
 
@@ -11,12 +11,12 @@
     <div class="admin-sidebar">
         <h3>Admin Panel</h3>
         <ul>
-            <li><a href="${pageContext.request.contextPath}/admin" class="active">📊 대시보드</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin">📊 대시보드</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/member">👥 회원 관리</a></li>
             <%-- 🌟 게시글 관리 주소도 연결 완료! --%>
             <li><a href="${pageContext.request.contextPath}/admin/board">📝 게시글 관리</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/report">🚨 신고 관리</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/company">🏢 기업 정보 관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/company" class="active">🏢 기업 정보 관리</a></li>
         </ul>
     </div>
 
@@ -252,4 +252,4 @@
 
 <%-- JS 연결 --%>
 <script>const contextPath = '${pageContext.request.contextPath}';</script>
-<script src="${pageContext.request.contextPath}/js/admin/admin_company.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin/admin-company.js"></script>

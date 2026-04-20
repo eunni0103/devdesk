@@ -17,7 +17,7 @@ public class AccountDoneC extends HttpServlet {
         request.setAttribute("welcomeName", welcomeName);
 
         // 껍데기(index.jsp)에 알맹이(accountSuccess.jsp)를 씌워서 보여줍니다.
-        request.setAttribute("content", "user/accountDone.jsp");
+        request.setAttribute("content", "user/account_done.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

@@ -1,6 +1,6 @@
 package com.devdesk.pj.user;
 
-import com.devdesk.pj.Comment.CommentVO;
+import com.devdesk.pj.comment.CommentVO;
 import com.devdesk.pj.board.BoardVO;
 import com.devdesk.pj.main.DBManager_new;
 

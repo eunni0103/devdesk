@@ -36,7 +36,7 @@ public class ReportDetailC extends HttpServlet {
         }
 
         request.setAttribute("report", report);
-        
+
 
         if (report.getRepoReviewId() > 0) {
             request.setAttribute("targetReview",
@@ -46,7 +46,7 @@ public class ReportDetailC extends HttpServlet {
                     com.devdesk.pj.board.BoardDAO.getBoardById(report.getRepoBoardId()));
         }
 
-        request.setAttribute("content", "report/reportDetail.jsp");
+        request.setAttribute("content", "report/report-detail.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

@@ -1,45 +1,4 @@
 /* ════════════════════════
-   SIDEBAR (til2.jsp 전용 오버라이드)
-   sidebar.css와 함께 로드됨 — TIL 페이지는 헤더가 없으므로 top:0 적용
-════════════════════════ */
-=======
-
-
-/* sidebar.css와 달리 TIL 페이지 사이드바 로고 여백 */
-.sidebar-logo {
-    padding: 24px 20px 0px;
-}
-
-/* sidebar.css와 달리 TIL 페이지 nav 항목 스타일 */
-.nav-section-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--text3);
-    padding: 10px 8px 6px;
-}
-
-.nav-item {
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    transition: all 0.15s;
-    margin-bottom: 2px;
-}
-
-.nav-item:hover {
-    color: var(--text);
-}
-
-.nav-item.active {
-    background: rgba(91, 124, 248, 0.1);
-    color: var(--accent);
-    font-weight: 600;
-}
-
-/* .hamburger, .sidebar-overlay → sidebar.css에서 정의 (중복 제거) */
-
-/* ════════════════════════
    PAGE HEADER
 ════════════════════════ */
 .page-header-row {

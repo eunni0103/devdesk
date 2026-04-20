@@ -12,7 +12,8 @@
     flex-direction: column;
     z-index: 100;
     transition: transform 0.25s;
-    height: calc(100vh - 70px);
+    top: 0;
+    height: 100vh;
 }
 
 /* 선민 수정 */
@@ -569,6 +570,37 @@
     background: var(--surface, #ffffff); /* 스크롤 될 때 뒷배경이 비치지 않도록 흰색 바탕 처리 */
 }
 
+.user-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.user-role {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 1px;
+}
 
 /* 모바일 햄버거 메뉴 설정 */
 .hamburger {

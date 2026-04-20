@@ -15,7 +15,7 @@ public class CompanyUpdateC extends HttpServlet {
         int companyId = Integer.parseInt(request.getParameter("companyId"));
         CompanySearchVO company = CompanySearchDAO.COMPANY_SEARCH_DAO.getCompanyById(companyId);
         request.setAttribute("company", company);
-        request.setAttribute("content", "/company/company-search/companyUpdateForm.jsp");
+        request.setAttribute("content", "/company/company-search/company_update_form.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

@@ -199,14 +199,19 @@ document.addEventListener('keydown', function (e) {
         closeConfirm();
     }
 });
-document.getElementById('tilEditorModal').addEventListener('click', function (e) {
-    if (e.target === e.currentTarget) closeEditor();
-});
-document.getElementById('tilDetailModal').addEventListener('click', function (e) {
-    if (e.target === e.currentTarget) closeDetail();
-});
-document.getElementById('confirmOverlay').addEventListener('click', function (e) {
-    if (e.target === e.currentTarget) closeConfirm();
+document.addEventListener('DOMContentLoaded', function () {
+    var tilEditorModal = document.getElementById('tilEditorModal');
+    if (tilEditorModal) tilEditorModal.addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeEditor();
+    });
+    var tilDetailModal = document.getElementById('tilDetailModal');
+    if (tilDetailModal) tilDetailModal.addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeDetail();
+    });
+    var confirmOverlay = document.getElementById('confirmOverlay');
+    if (confirmOverlay) confirmOverlay.addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeConfirm();
+    });
 });
 
 /* ==========================================

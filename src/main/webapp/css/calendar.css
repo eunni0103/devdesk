@@ -357,11 +357,11 @@
     background: var(--accent-hover, #7c3aed);
 }
 
-.form-group {
+.cal-form-group {
     margin-bottom: 14px;
 }
 
-.form-group label {
+.cal-form-group label {
     display: block;
     font-size: 12px;
     font-weight: 700;
@@ -369,7 +369,7 @@
     color: var(--text2, #64748b);
 }
 
-.form-group input, .form-group select {
+.cal-form-group input, .cal-form-group select {
     width: 100%;
     padding: 9px 11px;
     box-sizing: border-box;
@@ -381,7 +381,7 @@
     font-family: inherit;
 }
 
-.form-group input:focus, .form-group select:focus {
+.cal-form-group input:focus, .cal-form-group select:focus {
     border-color: var(--accent2, #8e5ae5);
     outline: none;
     box-shadow: 0 0 0 3px rgba(142, 90, 229, 0.15);
@@ -438,7 +438,7 @@
 /* =======================================================
    알림/확인 모달 오버레이 (기존 유지)
 ======================================================= */
-.modal-overlay {
+.cal-modal-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -451,7 +451,7 @@
     justify-content: center;
 }
 
-.modal-box {
+.cal-modal-box {
     background: var(--surface, #fff);
     padding: 28px 24px;
     border-radius: 12px;
@@ -461,7 +461,7 @@
     border: 1px solid var(--border, #e2e8f0);
 }
 
-.modal-box p {
+.cal-modal-box p {
     font-size: 15px;
     font-weight: 600;
     color: var(--text, #1a202c);

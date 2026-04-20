@@ -85,10 +85,11 @@ public class AdminDAO {
 
         try (Connection con = DBManager_new.connect()) {
 
-            // 1️⃣ 총 가입자 수 & 오늘 신규 가입자 수
+            // 1️⃣ 총 가입자 수 & 오늘 신규 가입자 수 (🌟 수정됨: 탈퇴 회원 제외 조건 추가)
             String sql1 = "SELECT COUNT(member_id) as total_cnt, " +
                     "COUNT(CASE WHEN TRUNC(created_date) = TRUNC(SYSDATE) THEN 1 END) as today_cnt " +
-                    "FROM member";
+                    "FROM member " +
+                    "WHERE NVL(status, 'active') = 'active'"; // 🌟 탈퇴 회원(deleted) 제외
             try (PreparedStatement ps = con.prepareStatement(sql1);
                  ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -108,6 +109,7 @@ public class AdminDAO {
 
             // 3️⃣ 직무 카테고리 분포 (도넛 차트용)
             // 💡 고정된 5개 항목을 만들고(LEFT JOIN), 조건에서 탈퇴한 회원을 완벽하게 차단합니다.
+            // 🌟 수정됨: AND m.role != 'admin' 조건 삭제 (관리자 직무도 통계에 포함)
             String sql3 = "SELECT j.job, NVL(COUNT(m.member_id), 0) as cnt " +
                     "FROM ( " +
                     "  SELECT '프론트엔드' as job FROM dual UNION ALL " +
@@ -118,7 +120,6 @@ public class AdminDAO {
                     ") j " +
                     "LEFT JOIN member m " +
                     "  ON NVL(m.job_category, '미입력(소셜)') = j.job " +
-                    "  AND m.role != 'admin' " +
                     "  AND NVL(m.status, 'active') = 'active' " + // 🌟 탈퇴(deleted) 상태 제외
                     "  AND m.nickname != '탈퇴한 회원' " +        // 🌟 닉네임 변경된 탈퇴 회원 제외
                     "  AND m.email NOT LIKE 'del_%' " +           // 🌟 이메일 지워진 탈퇴 회원 제외

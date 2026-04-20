@@ -1,5 +1,4 @@
 // 1. 미니 모달 열기/닫기
-console.log("qqqq")
 
 
 function openCompanyModal() {

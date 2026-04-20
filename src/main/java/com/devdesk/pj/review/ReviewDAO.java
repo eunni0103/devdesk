@@ -151,7 +151,7 @@ public class ReviewDAO {
                 + " r_difficulty=?, r_result=?, r_content=?,"
                 + " r_interviewer_count=?, r_student_count=?,"
                 + " r_atmosphere=?, r_contact_method=?, r_contact_days=?,"
-                + " r_updated_date=SYSDATE"
+                + " r_rating=?, r_updated_date=SYSDATE"
                 + " WHERE r_id=?";
         try (Connection con = DBManager_new.connect();
              PreparedStatement pstmt = con.prepareStatement(sql)
@@ -167,7 +167,8 @@ public class ReviewDAO {
             pstmt.setString(9, vo.getReviewAtmosphere());
             pstmt.setString(10, vo.getReviewContactMethod());
             pstmt.setInt(11, vo.getReviewContactDays());
-            pstmt.setInt(12, vo.getReviewId());
+            pstmt.setInt(12, vo.getReviewRating());
+            pstmt.setInt(13, vo.getReviewId());
             return pstmt.executeUpdate();
 
         } catch (Exception e) {

@@ -12,7 +12,7 @@ public class CalendarUpdateC extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         try {
-            Schedule_newDAO.SCAO.updateSchedule(request, response);
+            ScheduleNewDAO.SCAO.updateSchedule(request, response);
 
             response.setContentType("text/plain; charset=UTF-8");
             response.getWriter().write("success");

@@ -53,7 +53,7 @@ public class ResumeBlockC extends HttpServlet {
         request.setAttribute("categoryCount", categoryCount);
         request.setAttribute("currentFilter", filter != null ? filter : "all");
 
-        request.setAttribute("content", "/resume-block/resumeBlock.jsp");
+        request.setAttribute("content", "/resume-block/resume_block.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

@@ -440,11 +440,11 @@
 }
 
 /* Content area */
-.content-area {
+.board-content-area {
     flex-direction: column;
 }
 
-.content-area .detail-label {
+.board-content-area .detail-label {
     width: 100%;
     margin-bottom: 10px;
     border-bottom: 1px solid var(--border-primary);
@@ -531,12 +531,12 @@
 }
 
 /* Form group */
-.form-group {
+.board-form-group {
     margin-bottom: 25px;
 }
 
 /* Label */
-.form-group label {
+.board-form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
@@ -544,9 +544,9 @@
 }
 
 /* Input, select, textarea common */
-.form-group input,
-.form-group select,
-.form-group textarea {
+.board-form-group input,
+.board-form-group select,
+.board-form-group textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid;
@@ -559,16 +559,16 @@
 }
 
 /* Focus effect */
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.board-form-group input:focus,
+.board-form-group select:focus,
+.board-form-group textarea:focus {
     border-color: #4f46e5;
     outline: none;
     box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
 }
 
 /* Textarea */
-.form-group textarea {
+.board-form-group textarea {
     resize: none;
     line-height: 1.5;
 }
