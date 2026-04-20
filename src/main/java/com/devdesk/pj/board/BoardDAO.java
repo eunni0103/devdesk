@@ -24,7 +24,6 @@ public class BoardDAO {
             ps.setInt(1, Integer.parseInt(request.getParameter("member_id")));
             ps.setString(2, request.getParameter("category"));
             ps.setString(3, request.getParameter("title"));
-ps.setString(4, request.getParameter("txt"));
             ps.setString(4, request.getParameter("txt"));
 
             // ✔ 실행은 한 번만
@@ -182,7 +181,7 @@ ps.setString(4, request.getParameter("txt"));
 
     public static int delBoardById(int boardId) {
         String delComments = "DELETE FROM comments WHERE b_board_id = ?";
-        String delBoard    = "DELETE FROM board WHERE b_board_id = ?";
+        String delBoard = "DELETE FROM board WHERE b_board_id = ?";
         try (Connection con = DBManager_new.connect()) {
             try (PreparedStatement ps = con.prepareStatement(delComments)) {
                 ps.setInt(1, boardId);

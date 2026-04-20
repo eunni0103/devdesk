@@ -70,7 +70,7 @@
                     </div>
                     <div class="meta-info">
                         <span class="like-count">❤️ ${b.like_count}</span>
-                        <c:if test="${b.like_count > 3}">  <%-- 3개 이상이여야 인기글 배지 --%>
+                        <c:if test="${b.like_count > 3}">  <%-- 4개 이상이여야 인기글 배지 --%>
                             <span class="popular-badge">🔥 인기글</span>
                         </c:if>
                     </div>
