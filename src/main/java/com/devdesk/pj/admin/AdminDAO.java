@@ -406,13 +406,23 @@ public class AdminDAO {
         return false;
     }
 
-    // 🌟 [기업 관리] 기업 삭제 (review도 함께 삭제)
+    // 🌟 [기업 관리] 기업 삭제 (review, application, schedule도 함께 삭제)
     public boolean deleteCompanyAdmin(int companyId) {
+        String sqlDelSch = "DELETE FROM schedule WHERE app_id IN (SELECT app_id FROM application WHERE company_id = ?)";
+        String sqlDelApp = "DELETE FROM application WHERE company_id = ?";
         String sqlDelRev = "DELETE FROM review WHERE r_company_id = ?";
         String sqlDelComp = "DELETE FROM company WHERE company_id = ?";
         try (Connection con = DBManager_new.connect()) {
             con.setAutoCommit(false);
             try {
+                try (PreparedStatement ps = con.prepareStatement(sqlDelSch)) {
+                    ps.setInt(1, companyId);
+                    ps.executeUpdate();
+                }
+                try (PreparedStatement ps = con.prepareStatement(sqlDelApp)) {
+                    ps.setInt(1, companyId);
+                    ps.executeUpdate();
+                }
                 try (PreparedStatement ps = con.prepareStatement(sqlDelRev)) {
                     ps.setInt(1, companyId);
                     ps.executeUpdate();
