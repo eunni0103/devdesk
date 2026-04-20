@@ -358,6 +358,19 @@ public class CompanySearchDAO {
                 result.put("companies", companies);
             }
 
+            // 매칭되는 전체 회사 ID (리뷰 필터 연동용 — 페이지와 무관)
+            String idSql = "SELECT company_id FROM (" + baseSql + ")";
+            try (PreparedStatement pstmt = con.prepareStatement(idSql)) {
+                for (int i = 0; i < params.size(); i++) {
+                    pstmt.setObject(i + 1, params.get(i));
+                }
+                List<Integer> ids = new ArrayList<>();
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    while (rs.next()) ids.add(rs.getInt("company_id"));
+                }
+                result.put("allCompanyIds", ids);
+            }
+
             int totalCount = (int) result.get("totalCount");
             result.put("totalPages", (int) Math.ceil((double) totalCount / pageSize));
             result.put("currentPage", page);
