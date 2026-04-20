@@ -102,7 +102,7 @@ function renderReviews(reviews) {
             + '  </div>'
             + '</div>'
             + '<div class="read-more-container">'
-            + '  <a href="' + contextPath + '/review/detail?reviewId="' + r.reviewId + '" class="read-more-btn">계속 읽기</a>'
+            + '  <a href="' + contextPath + '/review/detail?reviewId=' + r.reviewId + '" class="read-more-btn">계속 읽기</a>'
             + '</div>'
             + '<div class="card-footer">'
             + '  <div class="footer-left">'
