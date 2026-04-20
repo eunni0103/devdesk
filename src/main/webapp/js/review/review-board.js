@@ -68,7 +68,7 @@ function renderReviews(reviews) {
         html += '<div class="card">'
             + '<div class="card-header">'
             + '  <div>'
-            + '  <a href="' + contextPath + '/review?companyId=' + r.reviewCompanyId + '">' + (r.companyName || '') + '</a>'
+            + '  <a href="' + contextPath + '/company-detail?companyId=' + r.reviewCompanyId + '">' + (r.companyName || '') + '</a>'
             + '  </div>'
             + '</div>'
             + '<h2 class="card-title">' + r.reviewTitle + '</h2>'
@@ -96,7 +96,7 @@ function renderReviews(reviews) {
             + '  <div class="footer-left">'
             + '    <span class="card-like">♥ <span class="like-num">' + r.reviewLikeCount + '</span></span>'
             + (r.reviewRating > 0 ? '    <span class="card-rating">'
-                + (function() {
+                + (function () {
                     let stars = '';
                     for (let s = 1; s <= 5; s++) {
                         stars += '<span class="card-star ' + (s <= r.reviewRating ? 'on' : '') + '">★</span>';
