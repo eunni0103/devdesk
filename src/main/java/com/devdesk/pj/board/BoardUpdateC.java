@@ -13,7 +13,6 @@ public class BoardUpdateC extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //일
         BoardDAO.getBoard(request);
-        request.setAttribute("content", "board/boardUp.jsp");
         // loginCheck
         request.setAttribute("content", "board/board_up.jsp");
         request.getRequestDispatcher("/index.jsp").forward(request, response);

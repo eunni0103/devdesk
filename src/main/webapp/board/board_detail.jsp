@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/board-all.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/comment.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
@@ -51,7 +52,7 @@
             </div>
             <div class="detail-row">
                 <div class="detail-label">작성일</div>
-                <div class="detail-content">${board.created_date}</div>
+                <div class="detail-content"><fmt:formatDate value="${board.created_date}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">조회수</div>

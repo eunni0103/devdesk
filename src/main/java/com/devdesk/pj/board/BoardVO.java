@@ -2,6 +2,7 @@ package com.devdesk.pj.board;
 
 
 import lombok.Data;
+import java.util.Date;
 
 @Data
 public class BoardVO {
@@ -13,8 +14,8 @@ public class BoardVO {
     private int view_count;
     private int like_count;
     private char hidden_yn;
-    private String created_date;
-    private String updated_date;
+    private Date created_date;
+    private Date updated_date;
     private String nickname;
     private int comment_count; // 댓글 수 필드 추가
 

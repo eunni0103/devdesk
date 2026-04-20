@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BoardDAO {
@@ -60,7 +61,7 @@ public class BoardDAO {
                 bo.setCategory(rs.getString("b_category"));
                 bo.setTitle(rs.getString("b_title"));
                 bo.setMember_id(rs.getInt("member_id"));
-                bo.setCreated_date(rs.getString("b_created_date"));
+                bo.setCreated_date(rs.getTimestamp("b_created_date"));
                 bo.setView_count(rs.getInt("b_view_count"));
                 bo.setComment_count(rs.getInt("comment_count"));
                 bo.setLike_count(rs.getInt("like_count"));
@@ -94,7 +95,7 @@ public class BoardDAO {
                 bo.setCategory(rs.getString("b_category"));
                 bo.setTitle(rs.getString("b_title"));
                 bo.setMember_id(rs.getInt("member_id"));
-                bo.setCreated_date(rs.getString("b_created_date"));
+                bo.setCreated_date(rs.getTimestamp("b_created_date"));
                 bo.setView_count(rs.getInt("b_view_count"));
                 bo.setComment_count(rs.getInt("comment_count"));
                 bo.setLike_count(rs.getInt("like_count"));
@@ -127,7 +128,7 @@ public class BoardDAO {
                 bo.setCategory(rs.getString("b_category"));
                 bo.setTitle(rs.getString("b_title"));
                 bo.setMember_id(rs.getInt("member_id"));
-                bo.setCreated_date(rs.getString("b_created_date"));
+                bo.setCreated_date(rs.getTimestamp("b_created_date"));
                 bo.setView_count(rs.getInt("b_view_count"));
                 bo.setComment_count(rs.getInt("comment_count"));
                 bo.setLike_count(rs.getInt("like_count"));
@@ -168,7 +169,7 @@ public class BoardDAO {
                     vo.setTitle(rs.getString("b_title"));
                     vo.setContent(rs.getString("b_content"));
                     vo.setCategory(rs.getString("b_category"));
-                    vo.setCreated_date(rs.getString("b_created_date"));
+                    vo.setCreated_date(rs.getTimestamp("b_created_date"));
                     vo.setNickname(rs.getString("nickname"));
                     return vo;
                 }
@@ -244,7 +245,7 @@ public class BoardDAO {
                     bo.setCategory(rs.getString("b_category"));
                     bo.setTitle(rs.getString("b_title"));
                     bo.setMember_id(rs.getInt("member_id"));
-                    bo.setCreated_date(rs.getString("b_created_date"));
+                    bo.setCreated_date(rs.getTimestamp("b_created_date"));
                     bo.setView_count(rs.getInt("b_view_count"));
                     bo.setComment_count(rs.getInt("comment_count"));
                     bo.setLike_count(rs.getInt("like_count"));
@@ -299,8 +300,8 @@ public class BoardDAO {
                     String title = rs.getString("b_title");
                     String content = rs.getString("b_content");
                     String category = rs.getString("b_category");
-                    String created_date = rs.getString("b_created_date");
-                    String updated_date = rs.getString("b_updated_date");
+                    java.util.Date created_date = rs.getTimestamp("b_created_date");
+                    java.util.Date updated_date = rs.getTimestamp("b_updated_date");
                     int view_count = rs.getInt("b_view_count");
                     int like_count = rs.getInt("b_like_count");
                     String hiddenYnStr = rs.getString("b_hidden_yn");
@@ -379,7 +380,7 @@ public class BoardDAO {
                     bo.setCategory(rs.getString("b_category"));
                     bo.setTitle(rs.getString("b_title"));
                     bo.setMember_id(rs.getInt("member_id"));
-                    bo.setCreated_date(rs.getString("b_created_date"));
+                    bo.setCreated_date(rs.getTimestamp("b_created_date"));
                     bo.setView_count(rs.getInt("b_view_count"));
                     bo.setComment_count(rs.getInt("comment_count"));
                     bo.setLike_count(rs.getInt("like_count"));
@@ -427,7 +428,7 @@ public class BoardDAO {
                     bo.setCategory(rs.getString("b_category"));
                     bo.setTitle(rs.getString("b_title"));
                     bo.setMember_id(rs.getInt("member_id"));
-                    bo.setCreated_date(rs.getString("b_created_date"));
+                    bo.setCreated_date(rs.getTimestamp("b_created_date"));
                     bo.setView_count(rs.getInt("b_view_count"));
                     bo.setComment_count(rs.getInt("comment_count"));
                     bo.setLike_count(rs.getInt("like_count"));

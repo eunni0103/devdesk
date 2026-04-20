@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/board-all.css">
 
 <!DOCTYPE html>
@@ -60,19 +61,19 @@
                         <c:choose>
                             <%-- 최종 수정일이 있으면 수정일 표시 --%>
                             <c:when test="${not empty b.updated_date}">
-                                ${b.updated_date} <span style="font-size: 0.8em; color: #7c3aed;">(수정됨)</span>
+                                <fmt:formatDate value="${b.updated_date}" pattern="yyyy년 M월 d일"/> <span style="font-size: 0.8em; color: #7c3aed;">(수정됨)</span>
                             </c:when>
                             <%-- 없으면 최초 작성일 표시 --%>
                             <c:otherwise>
-                                ${b.created_date}
+                                <span><fmt:formatDate value="${b.created_date}" pattern="yyyy년 M월 d일"/></span>
                             </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="meta-info">
-                        <span class="like-count">❤️ ${b.like_count}</span>
                         <c:if test="${b.like_count > 3}">  <%-- 4개 이상이여야 인기글 배지 --%>
                             <span class="popular-badge">🔥 인기글</span>
                         </c:if>
+                        <span class="like-count">❤️ ${b.like_count}</span>
                     </div>
                 </div>
             </div>
