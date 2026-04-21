@@ -34,31 +34,14 @@
                         조치합니다.</p>
                 </div>
                 <div class="board-actions">
-                    <button class="write-btn" onclick="location.href='${pageContext.request.contextPath}/admin/report'">
-                        목록으로
+                    <%-- JS로 동작을 넘긴 깔끔한 버튼 --%>
+                    <button type="button" id="btnGoList" class="reset-btn"
+                            data-url="${pageContext.request.contextPath}/admin/report">목록으로
                     </button>
                 </div>
             </div>
-            <div class="board-container report-container-admin detail" style="padding: 20px;">
 
-                <%-- 상단 헤더 --%>
-                <div class="board-header detail"
-                     style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                    <div>
-                        <h2 style="margin-bottom: 5px;">🚨 신고 상세 내역</h2>
-                        <p class="admin-page-desc" style="color: #64748b; font-size: 14px; margin: 0;">신고된 콘텐츠의 상세
-                            내용을 확인하고
-                            조치합니다.</p>
-                    </div>
-                    <div class="board-actions">
-                        <%-- JS로 동작을 넘긴 깔끔한 버튼 --%>
-                        <button type="button" id="btnGoList" class="reset-btn"
-                                data-url="${pageContext.request.contextPath}/admin/report">목록으로
-                        </button>
-                    </div>
-                </div>
-
-                <div class="detail-view">
+            <div class="detail-view">
                     <%-- 기본 정보 그룹 (2x2 그리드 적용) --%>
                     <div class="detail-info-group grid-2x2">
                         <div class="detail-row">
@@ -97,7 +80,7 @@
                         <div class="detail-content">
                         <span class="report-reason-badge"
                               style="display: inline-block; width: auto; padding: 5px 12px;">
-                            <c:out value="${report.repoReason}" escapeXml="false"/>
+                            ${report.repoReason}
                         </span>
                         </div>
                     </div>
@@ -113,7 +96,7 @@
                         <div class="detail-label">상세 내용</div>
                         <div class="detail-content text-box"
                              style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; line-height: 1.6;">
-                            <c:out value="${report.repoContent}" escapeXml="false"/>
+                            ${report.repoContent}
                         </div>
                     </div>
 
@@ -124,32 +107,21 @@
                                 <div class="detail-label">리뷰 원문</div>
                                 <div class="detail-content"
                                      style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                                    <div style="font-weight: 600; margin-bottom: 4px; color: #1e293b;"><c:out
-                                            value="${targetReview.reviewTitle}"/></div>
+                                    <div style="font-weight: 600; margin-bottom: 4px; color: #1e293b;">
+                                        <a href="${pageContext.request.contextPath}/review/detail?reviewId=${targetReview.reviewId}" target="_blank" style="color: #1e293b; text-decoration: underline;">
+                                            ${targetReview.reviewTitle}
+                                        </a>
+                                    </div>
                                     <div style="color: #64748b; font-size: 13px; margin-bottom: 12px;">
                                             ${targetReview.companyName}
                                         &nbsp;·&nbsp; ${targetReview.reviewCreatedDate}
                                     </div>
-                                    <div style="line-height: 1.6; color: #334155;"><c:out
-                                            value="${targetReview.reviewContent}"/></div>
+                                    <div style="line-height: 1.6; color: #334155;">
+                                        ${targetReview.reviewContent}
+                                    </div>
                                 </div>
                             </div>
                         </c:when>
-                        <%--                    <c:when test="${not empty targetBoard}">--%>
-                        <%--                        <div class="detail-row" style="margin-top: 16px;">--%>
-                        <%--                            <div class="detail-label">게시글 원문</div>--%>
-                        <%--                            <div class="detail-content"--%>
-                        <%--                                 style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">--%>
-                        <%--                                <div style="font-weight: 600; margin-bottom: 4px; color: #1e293b;"><c:out--%>
-                        <%--                                        value="${targetBoard.title}"/></div>--%>
-                        <%--                                <div style="color: #64748b; font-size: 13px; margin-bottom: 12px;">--%>
-                        <%--                                        ${targetBoard.nickname} &nbsp;·&nbsp; ${targetBoard.created_date}--%>
-                        <%--                                </div>--%>
-                        <%--                                <div style="line-height: 1.6; color: #334155;"><c:out--%>
-                        <%--                                        value="${targetBoard.content}"/></div>--%>
-                        <%--                            </div>--%>
-                        <%--                        </div>--%>
-                        <%--                    </c:when>--%>
 
                         <c:when test="${not empty targetBoard}">
                             <div class="detail-row" style="margin-top: 16px;">
@@ -157,13 +129,13 @@
                                 <div class="detail-content"
                                      style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
                                     <div style="font-weight: 600; margin-bottom: 4px; color: #1e293b;">
-                                        <c:out value="${targetBoard.title}"/>
+                                        <a href="${pageContext.request.contextPath}/BoardDetailC?id=${targetBoard.board_id}" target="_blank" style="color: #1e293b; text-decoration: underline;">
+                                            ${targetBoard.title}
+                                        </a>
                                     </div>
                                     <div style="color: #64748b; font-size: 13px; margin-bottom: 12px;">
                                             ${targetBoard.nickname} &nbsp;·&nbsp; ${targetBoard.created_date}
                                     </div>
-                                        <%-- 🌟 이미지 URL을 <img> 태그로 변환해서 출력 --%>
-                                        <%--                                <div style="line-height: 1.6; color: #334155;" id="boardContentArea"></div>--%>
                                     <div style="line-height: 1.6; color: #334155;" id="boardContentArea"
                                          data-content="${targetBoard.content}"></div>
                                 </div>

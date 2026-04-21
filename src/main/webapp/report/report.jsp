@@ -85,8 +85,8 @@
                                     </c:otherwise>
                                 </c:choose>
 
-                                <div class="report-reason-badge"><c:out value="${r.repoReason}"/></div>
-                                <div class="col-title"><c:out value="${r.repoContent}"/></div>
+                                <div class="report-reason-badge">${r.repoReason}</div>
+                                <div class="col-title">${r.repoContent}</div>
 
                                 <div class="col-date">
                                     <div class="date-info">${r.repoCreated}</div>
