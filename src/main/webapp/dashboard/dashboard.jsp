@@ -204,7 +204,12 @@
                             <div class="funnel-row">
                                 <div class="funnel-labels">
                                     <span>${row.fromLabel} → ${row.toLabel}</span>
-                                    <span style="color:${row.toColor}; font-weight:600">${row.pct}%</span>
+                                    <span style="color:${row.toColor}; font-weight:600">
+                                        <c:choose>
+                                            <c:when test="${row.noData}">-</c:when>
+                                            <c:otherwise>${row.pct}%</c:otherwise>
+                                        </c:choose>
+                                    </span>
                                 </div>
                                 <div class="funnel-track">
                                     <div class="funnel-fill"

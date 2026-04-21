@@ -191,3 +191,58 @@ $(document).on('keydown', function (e) {
 });
 
 console.log('[application_list.js] loaded');
+
+/* ══════════════════════════════
+   EASTER EGG 3: 불합격 카드 클릭 → 위로 토스트
+══════════════════════════════ */
+(function () {
+    var COMFORT_MSGS = [
+        '괜찮아요, 다음 기회가 반드시 있어요 💪',
+        '한 번의 불합격이 끝이 아니에요. 계속 도전해요! 🔥',
+        '지금 이 경험이 당신을 더 강하게 만들 거예요 ✨',
+        '포기하지 않는 사람이 결국 해내더라고요 🌟',
+        '이 문이 닫혔다면, 더 좋은 문이 열릴 거예요 🚪'
+    ];
+    var toastTimer = null;
+
+    $('#cardGrid').on('click', '.app-card', function (e) {
+        if ($(e.target).closest('button, select, form, a').length) return;
+
+        var cardId = this.id.replace('card_', '');
+        if ($('#init_status_' + cardId).val() !== 'FAIL') return;
+
+        var msg = COMFORT_MSGS[Math.floor(Math.random() * COMFORT_MSGS.length)];
+
+        $('#comfort-toast').remove();
+        clearTimeout(toastTimer);
+
+        var toast = $('<div id="comfort-toast"></div>').text(msg).css({
+            position: 'fixed',
+            bottom: '36px',
+            left: '50%',
+            transform: 'translateX(-50%) translateY(16px)',
+            background: 'linear-gradient(135deg, #8b6ef5, #ff6b6b)',
+            color: '#fff',
+            padding: '14px 26px',
+            borderRadius: '14px',
+            fontSize: '14px',
+            fontWeight: '600',
+            boxShadow: '0 8px 28px rgba(139,110,245,0.45)',
+            zIndex: '9999',
+            opacity: 0,
+            transition: 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275)',
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none'
+        });
+
+        $('body').append(toast);
+        setTimeout(function () {
+            toast.css({ opacity: 1, transform: 'translateX(-50%) translateY(0)' });
+        }, 10);
+
+        toastTimer = setTimeout(function () {
+            toast.css({ opacity: 0, transform: 'translateX(-50%) translateY(16px)' });
+            setTimeout(function () { toast.remove(); }, 320);
+        }, 3500);
+    });
+})();
