@@ -40,7 +40,7 @@
    입력: ↑ ↑ ↓ ↓ ← → ← → B A
 ═══════════════════════════════════════════════════ */
 (function () {
-    var KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    var KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     var idx = 0;
 
     var style = document.createElement('style');
@@ -52,7 +52,10 @@
     document.addEventListener('keydown', function (e) {
         if (e.key === KONAMI[idx]) {
             idx++;
-            if (idx === KONAMI.length) { idx = 0; launchCelebration(); }
+            if (idx === KONAMI.length) {
+                idx = 0;
+                launchCelebration();
+            }
         } else {
             idx = (e.key === KONAMI[0]) ? 1 : 0;
         }
@@ -74,7 +77,7 @@
         overlay.appendChild(msg);
         document.body.appendChild(overlay);
 
-        var colors = ['#ff6b6b','#ffd166','#06d6a0','#118ab2','#8b6ef5','#56e39f','#ff9f1c','#f72585'];
+        var colors = ['#ff6b6b', '#ffd166', '#06d6a0', '#118ab2', '#8b6ef5', '#56e39f', '#ff9f1c', '#f72585'];
         for (var i = 0; i < 90; i++) {
             var el = document.createElement('div');
             var size = Math.random() * 10 + 6;
@@ -89,8 +92,12 @@
             overlay.appendChild(el);
         }
 
-        overlay.addEventListener('click', function () { overlay.remove(); });
-        setTimeout(function () { if (overlay.parentNode) overlay.remove(); }, 7000);
+        overlay.addEventListener('click', function () {
+            overlay.remove();
+        });
+        setTimeout(function () {
+            if (overlay.parentNode) overlay.remove();
+        }, 7000);
     }
 })();
 
@@ -106,7 +113,9 @@
             e.preventDefault();
             clickCount++;
             clearTimeout(timer);
-            timer = setTimeout(function () { clickCount = 0; }, 3000);
+            timer = setTimeout(function () {
+                clickCount = 0;
+            }, 3000);
 
             if (clickCount >= 10) {
                 clickCount = 0;
@@ -123,10 +132,13 @@
             '<div style="background:var(--surface,#fff);border-radius:20px;padding:40px 36px;max-width:420px;width:90%;text-align:center;color:var(--text,#1a202c);box-shadow:0 25px 60px rgba(0,0,0,0.35);animation:konami-pop 0.4s cubic-bezier(0.175,0.885,0.32,1.275);">' +
             '<div style="font-size:52px;margin-bottom:12px;">👨\u200d💻</div>' +
             '<div style="font-size:24px;font-weight:800;color:var(--accent,#8e5ae5);margin-bottom:4px;">DevDesk</div>' +
-            '<div style="font-size:12px;color:var(--text3,#a0aec0);margin-bottom:28px;">© 2026 Team SM1004</div>' +
+            '<div style="font-size:12px;color:var(--text3,#a0aec0);margin-bottom:28px;">© 2026 Team 오조사마(SM1004)</div>' +
             '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;text-align:left;">' +
-            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🏗️ <strong>동균</strong> — 지원 관리 · 기업 검색</div>' +
-            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🎨 <strong>선민</strong> — 워크스페이스 · 캘린더 · 게시판 · 후기</div>' +
+            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🏗️ <strong>동균</strong> — 지원 현황 · 이력서 폼 · TIL </div>' +
+            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🎨 <strong>선민</strong> — 자유게시판 · 공통 레이아웃 · 공통css</div>' +
+            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🎨 <strong>지영</strong> — Calendar · 면접 일정 · 구글 api 연동</div>' +
+            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🎨 <strong>상준</strong> — Review · Company Search · 비동기 필터링 </div>' +
+            '<div style="background:var(--surface2,#f8fafc);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text,#1a202c);">🎨 <strong>영은</strong> — 회원관리 시스템 · 소셜 로그인 · 마이페이지&관리자</div>' +
             '</div>' +
             '<div style="font-size:12px;color:var(--text3,#a0aec0);margin-bottom:22px;">취업 준비, 함께라서 덜 외로웠어요 🤝</div>' +
             '<button id="credits-close" style="background:var(--accent,#8e5ae5);color:#fff;border:none;border-radius:10px;padding:11px 32px;font-size:14px;font-weight:700;cursor:pointer;">닫기</button>' +
@@ -134,8 +146,12 @@
         );
 
         $('body').append(modal);
-        modal.on('click', function (e) { if (e.target === this) modal.remove(); });
-        $('#credits-close').on('click', function () { modal.remove(); });
+        modal.on('click', function (e) {
+            if (e.target === this) modal.remove();
+        });
+        $('#credits-close').on('click', function () {
+            modal.remove();
+        });
     }
 })();
 
