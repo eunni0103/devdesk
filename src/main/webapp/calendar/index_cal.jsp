@@ -287,9 +287,25 @@
                 $('#pop-time').text(currentEvent.extendedProps.time || '미정');
                 $('#pop-type').text(currentEvent.extendedProps.type || '-');
                 $('#pop-memo').text(currentEvent.extendedProps.memo || '-');
+                
                 var popW = 260, winW = $(window).width();
+                
+                // 실제 높이 측정을 위해 임시로 보여줌
+                $('#event-popup').css({ display: 'block', visibility: 'hidden' });
+                var popH = $('#event-popup').outerHeight() || 250;
+                var winH = $(window).height();
+                var scrollY = $(window).scrollTop();
+                
+                var newTop = y + 15;
+                // 아래쪽이 잘릴 경우 팝업을 마우스 위쪽으로 띄움
+                if (y - scrollY + 15 + popH > winH) {
+                    newTop = y - popH - 15;
+                }
+                
                 $('#event-popup').css({
-                    top: y + 15 + 'px',
+                    display: 'none',
+                    visibility: 'visible',
+                    top: newTop + 'px',
                     left: (x + 15 + popW > winW ? x - popW - 15 : x + 15) + 'px'
                 }).fadeIn(150);
             },
