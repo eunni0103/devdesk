@@ -9,7 +9,7 @@
 <div class="detail-wrap">
 
     <div class="detail-header">
-        <div class="company-badge"><c:out value="${company.companyName}"/></div>
+        <a href="${pageContext.request.contextPath}/company-detail?companyId=${company.companyId}" class="company-badge"><c:out value="${company.companyName}"/></a>
         <p class="company-meta"><c:out value="${company.companyIndustry}"/> · <c:out value="${company.companyLocation}"/> · ${company.companySize}명</p>
         <h2 class="detail-title"><c:out value="${r.reviewTitle}"/></h2>
         <div class="detail-meta">
