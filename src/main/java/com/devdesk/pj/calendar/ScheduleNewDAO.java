@@ -363,18 +363,29 @@ public class ScheduleNewDAO {
                     // [설정 포인트] 얼마 동안의 구글 일정을 긁어올 것인가?
                     // 서버 무리를 방지하기 위해, 초반엔 12시간, 발표 땐 1분(60,000ms)으로 변경하세요.
                     // ==============================================================
-                    long timeWindowMillis = 24 * 60 * 60 * 1000L; // 현재 세팅: 12시간
+//                    long timeWindowMillis = 24 * 60 * 60 * 1000L; // 현재 세팅: 12시간
                     // 서버가 꺼져있던 시간 대비해 확인하는 코드입니다
-                   //  long timeWindowMillis = 60 * 1000L; // 발표 시연용 세팅: 1분 (나중에 바꿔주세요)
+                    long timeWindowMillis = 60 * 1000L; // 발표 시연용 세팅: 1분 (나중에 바꿔주세요)
 
                     com.google.api.client.util.DateTime updatedMin =
                             new com.google.api.client.util.DateTime(System.currentTimeMillis() - timeWindowMillis);
 
                     // 업데이트된 이벤트만 가져오기 (최신순 정렬)
-                    com.google.api.services.calendar.model.Events events = service.events().list("primary")
-                            .setUpdatedMin(updatedMin)
-                            .setOrderBy("updated")
-                            .execute();
+                    com.google.api.services.calendar.model.Events events = null;
+                    try {
+                        events = service.events().list("primary")
+                                .setUpdatedMin(updatedMin)
+                                .setOrderBy("updated")
+                                .execute();
+                    } catch (com.google.api.client.auth.oauth2.TokenResponseException e) {
+                        System.err.println("❌ 회원번호 [" + memberId + "] 구글 캘린더 토큰 만료/권한취소로 동기화 건너뜀.");
+                        continue;
+                    } catch (Exception e) {
+                        System.err.println("❌ 회원번호 [" + memberId + "] 구글 캘린더 API 조회 실패: " + e.getMessage());
+                        continue;
+                    }
+
+                    if (events == null || events.getItems() == null) continue;
 
                     for (com.google.api.services.calendar.model.Event event : events.getItems()) {
                         if ("cancelled".equals(event.getStatus())) continue; // 삭제된 일정 패스
