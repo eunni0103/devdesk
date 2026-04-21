@@ -117,7 +117,8 @@ public class ReportC extends HttpServlet {
         vo.setRepoReason(repoReason);
         vo.setRepoContent(repoContent);
 
-        reportDAO.insertReport(vo);
+        int result = reportDAO.insertReport(vo);
+        System.out.println("Final Insert result in ReportC: " + result);
 
         // 신고 완료 페이지로 이동
         response.sendRedirect(request.getContextPath() + "/report_form?done=true");

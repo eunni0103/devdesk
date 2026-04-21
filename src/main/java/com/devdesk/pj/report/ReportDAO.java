@@ -35,8 +35,17 @@ public class ReportDAO {
             pstmt.setString(4, r.getRepoReason());
             pstmt.setString(5, r.getRepoContent());
 
-            return pstmt.executeUpdate();
+            System.out.println("Executing insertReport SQL with:");
+            System.out.println("reviewId: " + r.getRepoReviewId());
+            System.out.println("boardId: " + r.getRepoBoardId());
+            System.out.println("memberId: " + r.getRepoMemberId());
+            System.out.println("reason: " + r.getRepoReason());
+
+            int result = pstmt.executeUpdate();
+            System.out.println("Insert result: " + result);
+            return result;
         } catch (Exception e) {
+            System.err.println("Error in insertReport: " + e.getMessage());
             e.printStackTrace();
             return 0;
         }
