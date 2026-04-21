@@ -110,7 +110,7 @@
                         <c:if test="${empty viewedReviews || !viewedReviews.contains(r.reviewId)}">
                             <span class="badge-new">NEW</span>
                         </c:if>
-                        <a href="${pageContext.request.contextPath}/review?companyId=${r.reviewCompanyId}">
+                        <a href="${pageContext.request.contextPath}/company-detail?companyId=${r.reviewCompanyId}">
                                 ${r.companyName}
                         </a>
                     </div>

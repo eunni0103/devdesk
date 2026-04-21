@@ -107,16 +107,16 @@
                             <c:when test="${r.reviewContactMethod == 'WEBSITE'}">채용 홈페이지</c:when>
                             <c:otherwise><c:out value="${r.reviewContactMethod}"/></c:otherwise>
                         </c:choose>
-                        <c:if test="${r.reviewRating > 0}">
-                            <span class="rating-inline" style="margin-left: 10px; display: inline-flex; align-items: center; vertical-align: middle; gap: 1px;">
-                                <span style="font-size: 0.9em; color: #666; margin-right: 4px;">기업평점</span>
-                                <c:forEach begin="1" end="5" var="i">
-                                    <span class="star rating-star ${i <= r.reviewRating ? 'on' : ''}" 
-                                          style="font-size: 0.9em; color: ${i <= r.reviewRating ? '#ffd700' : '#ddd'};">★</span>
-                                </c:forEach>
-                                <span class="rating-num" style="margin-left: 4px; font-size: 0.9em; color: #666;">${r.reviewRating}.0</span>
-                            </span>
-                        </c:if>
+                    </span>
+                </div>
+            </c:if>
+            <c:if test="${r.reviewRating > 0}">
+                <div class="info-item">
+                    <span class="info-label">기업 평점</span>
+                    <span class="info-value">
+                        <c:forEach begin="1" end="5" var="i">
+                            <span class="star ${i <= r.reviewRating ? 'on' : ''}">★</span>
+                        </c:forEach>
                     </span>
                 </div>
             </c:if>

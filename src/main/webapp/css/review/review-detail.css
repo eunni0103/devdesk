@@ -77,18 +77,6 @@
     color: #f59e0b;
 }
 
-.rating-star {
-    font-size: 20px;
-}
-
-.rating-num {
-    font-size: 14px;
-    font-weight: 600;
-    color: #b45309;
-    margin-left: 6px;
-    vertical-align: middle;
-}
-
 .detail-content {
     font-size: 15px;
     line-height: 1.8;
