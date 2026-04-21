@@ -54,7 +54,8 @@
             <div class="field-row two-col">
                 <div class="field-group">
                     <label class="field-label required">지원 직무</label>
-                    <input type="text" name="jobPosition" id="jobPosition" value="${r.reviewJobPosition}" maxlength="20"/>
+                    <input type="text" name="jobPosition" id="jobPosition" value="${r.reviewJobPosition}"
+                           maxlength="20"/>
 
                 </div>
                 <div class="field-group">
@@ -195,7 +196,7 @@
         <%-- ===== 하단 버튼 ===== --%>
         <div class="form-actions">
             <button type="button" class="btn-cancel"
-                    onclick="location.href='${pageContext.request.contextPath}/review'">
+                    onclick="history.back()">
                 취소
             </button>
             <button type="submit" class="btn-submit">수정하기</button>

@@ -20,6 +20,7 @@ public class ReviewFilterAjaxC extends HttpServlet {
         String companyLocation = request.getParameter("companyLocation");
         String minRating       = request.getParameter("minRating");
         String maxRating       = request.getParameter("maxRating");
+        String companyIds      = request.getParameter("companyIds");
 
         // 기업 단건 조회용 (기업상세 페이지)
         String companyId = request.getParameter("companyId");
@@ -33,14 +34,17 @@ public class ReviewFilterAjaxC extends HttpServlet {
             page = Integer.parseInt(request.getParameter("page"));
         }
 
-        boolean hasCompanyCondition = (companyName != null && !companyName.isBlank())
+        Map<String, Object> data;
+        if (companyIds != null && !companyIds.isBlank()) {
+            // 여러 회사 ID가 주어진 경우 (기업 검색 결과 연동)
+            data = ReviewDAO.REVIEW_DAO.getFilteredReviews(
+                    companyIds, interviewType, result, sort, page, pageSize);
+        } else if ((companyName != null && !companyName.isBlank())
                 || (companyIndustry != null && !companyIndustry.isBlank())
                 || (companyLocation != null && !companyLocation.isBlank())
                 || (minRating != null && !minRating.isBlank())
-                || (maxRating != null && !maxRating.isBlank());
-
-        Map<String, Object> data;
-        if (hasCompanyCondition) {
+                || (maxRating != null && !maxRating.isBlank())) {
+            // 기존 조건부 검색
             data = ReviewDAO.REVIEW_DAO.getFilteredReviewsByCondition(
                     companyName, companyIndustry, companyLocation, minRating, maxRating,
                     interviewType, result, sort, page, pageSize);

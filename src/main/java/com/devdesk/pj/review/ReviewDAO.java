@@ -109,41 +109,51 @@ public class ReviewDAO {
         return reviews;
     }
 
-    public void insertReview(ReviewVO vo) {
+    public int insertReview(ReviewVO vo) {
+        int generatedId = 0;
+        String seqSql = "SELECT review_seq.NEXTVAL FROM DUAL";
         String sql = "INSERT INTO review (r_id, r_company_id, r_member_id, r_title,"
                 + " r_job_position, r_interview_type, r_difficulty, r_rating,"
                 + " r_result, r_content, r_interviewer_count, r_student_count,"
                 + " r_atmosphere, r_contact_method, r_contact_days)"
-                + " VALUES (review_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (
                 Connection con = DBManager_new.connect();
-                PreparedStatement pstmt = con.prepareStatement(sql)
+                PreparedStatement seqPstmt = con.prepareStatement(seqSql);
+                ResultSet rs = seqPstmt.executeQuery();
         ) {
-            pstmt.setInt(1, vo.getReviewCompanyId());
-            pstmt.setInt(2, vo.getReviewMemberId());
-            pstmt.setString(3, vo.getReviewTitle());
-            pstmt.setString(4, vo.getReviewJobPosition());
-            pstmt.setString(5, vo.getReviewInterviewType());
-            pstmt.setInt(6, vo.getReviewDifficulty());
-            pstmt.setInt(7, vo.getReviewRating());
-            pstmt.setString(8, vo.getReviewResult());
-            pstmt.setString(9, vo.getReviewContent());
-            pstmt.setInt(10, vo.getReviewInterviewerCount());
-            pstmt.setInt(11, vo.getReviewStudentCount());
-            pstmt.setString(12, vo.getReviewAtmosphere());
-            pstmt.setString(13, vo.getReviewContactMethod());
-            pstmt.setInt(14, vo.getReviewContactDays());
-            if (pstmt.executeUpdate() > 0) {
-                System.out.println("insert success");
-            } else {
-                System.out.println("insert fail");
+            if (rs.next()) {
+                generatedId = rs.getInt(1);
             }
 
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setInt(1, generatedId);
+                pstmt.setInt(2, vo.getReviewCompanyId());
+                pstmt.setInt(3, vo.getReviewMemberId());
+                pstmt.setString(4, vo.getReviewTitle());
+                pstmt.setString(5, vo.getReviewJobPosition());
+                pstmt.setString(6, vo.getReviewInterviewType());
+                pstmt.setInt(7, vo.getReviewDifficulty());
+                pstmt.setInt(8, vo.getReviewRating());
+                pstmt.setString(9, vo.getReviewResult());
+                pstmt.setString(10, vo.getReviewContent());
+                pstmt.setInt(11, vo.getReviewInterviewerCount());
+                pstmt.setInt(12, vo.getReviewStudentCount());
+                pstmt.setString(13, vo.getReviewAtmosphere());
+                pstmt.setString(14, vo.getReviewContactMethod());
+                pstmt.setInt(15, vo.getReviewContactDays());
+
+                if (pstmt.executeUpdate() > 0) {
+                    System.out.println("insert success");
+                } else {
+                    System.out.println("insert fail");
+                    generatedId = 0;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
+        return generatedId;
     }
 
     public int updateReview(ReviewVO vo) {

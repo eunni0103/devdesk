@@ -163,18 +163,38 @@ public class CompanySearchDAO {
 
     public void deleteCompany(int companyId) {
 
+
+        String sqlDelSch = "DELETE FROM schedule WHERE app_id IN (SELECT app_id FROM application WHERE company_id = ?)";
+        String sqlDelApp = "DELETE FROM application WHERE company_id = ?";
         String sqlDelRev = "delete from review where r_company_id = ?";
         String sqlDelComp = "delete from company where company_id = ?";
+
+
         try (
                 Connection con = DBManager_new.connect()
         ) {
-            try (PreparedStatement pstmt = con.prepareStatement(sqlDelRev)) {
-                pstmt.setInt(1, companyId);
-                pstmt.executeUpdate();
-            }
-            try (PreparedStatement pstmt = con.prepareStatement(sqlDelComp)) {
-                pstmt.setInt(1, companyId);
-                pstmt.executeUpdate();
+            con.setAutoCommit(false);
+            try {
+                try (PreparedStatement pstmt = con.prepareStatement(sqlDelSch)) {
+                    pstmt.setInt(1, companyId);
+                    pstmt.executeUpdate();
+                }
+                try (PreparedStatement pstmt = con.prepareStatement(sqlDelApp)) {
+                    pstmt.setInt(1, companyId);
+                    pstmt.executeUpdate();
+                }
+                try (PreparedStatement pstmt = con.prepareStatement(sqlDelRev)) {
+                    pstmt.setInt(1, companyId);
+                    pstmt.executeUpdate();
+                }
+                try (PreparedStatement pstmt = con.prepareStatement(sqlDelComp)) {
+                    pstmt.setInt(1, companyId);
+                    pstmt.executeUpdate();
+                }
+                con.commit();
+            } catch (Exception e) {
+                con.rollback();
+                e.printStackTrace();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -356,6 +376,19 @@ public class CompanySearchDAO {
                     }
                 }
                 result.put("companies", companies);
+            }
+
+            // 매칭되는 전체 회사 ID (리뷰 필터 연동용 — 페이지와 무관)
+            String idSql = "SELECT company_id FROM (" + baseSql + ")";
+            try (PreparedStatement pstmt = con.prepareStatement(idSql)) {
+                for (int i = 0; i < params.size(); i++) {
+                    pstmt.setObject(i + 1, params.get(i));
+                }
+                List<Integer> ids = new ArrayList<>();
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    while (rs.next()) ids.add(rs.getInt("company_id"));
+                }
+                result.put("allCompanyIds", ids);
             }
 
             int totalCount = (int) result.get("totalCount");

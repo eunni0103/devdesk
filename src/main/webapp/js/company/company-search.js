@@ -71,7 +71,8 @@ function doSearch(page) {
             companyIndustry: industries.join(','),
             companyLocation: locations.join(','),
             minRating: $('#minRating').val(),
-            maxRating: $('#maxRating').val()
+            maxRating: $('#maxRating').val(),
+            companyIds: data.allCompanyIds ? data.allCompanyIds.join(',') : ''
         };
         if (data.totalCount > 0) {
             loadFilteredReviews(conditions, 1);
@@ -92,6 +93,7 @@ function loadFilteredReviews(conditions, page) {
         type: 'get',
         dataType: 'json',
         data: {
+            companyIds: conditions.companyIds || '',
             companyName: conditions.companyName || '',
             companyIndustry: conditions.companyIndustry || '',
             companyLocation: conditions.companyLocation || '',
