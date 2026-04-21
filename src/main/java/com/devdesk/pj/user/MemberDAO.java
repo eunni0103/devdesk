@@ -218,7 +218,7 @@ public class MemberDAO {
                     bo.setCategory(rs.getString("b_category"));
                     bo.setTitle(rs.getString("b_title"));
                     bo.setMember_id(rs.getInt("member_id"));
-                    bo.setCreated_date(rs.getString("b_created_date"));
+                    bo.setCreated_date(rs.getTimestamp("b_created_date"));
                     bo.setView_count(rs.getInt("b_view_count"));
                     bo.setComment_count(rs.getInt("comment_count"));
                     bo.setLike_count(rs.getInt("like_count"));

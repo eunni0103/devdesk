@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%-- 🌟 불필요한 <html>, <head>, <body> 태그 삭제 완료! --%>
-<%-- 🌟 index.css는 부모인 index.jsp에서 이미 불러오므로 삭제하고 myboard.css만 부릅니다! --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/myboard.css">
 
 <%-- 여기서부터 진짜 알맹이 내용만 시작! --%>
@@ -55,7 +55,7 @@
                         </td>
                         <td>${board.view_count}</td>
                         <td>${board.like_count}</td>
-                        <td>${board.created_date.substring(0, 10)}</td>
+                        <td><fmt:formatDate value="${board.created_date}" pattern="yyyy-MM-dd"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>
