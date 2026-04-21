@@ -92,25 +92,40 @@ public class DashboardDAO {
     public static List<Map<String, Object>> getFunnelData(StageCountVO sc) {
         List<Map<String, Object>> funnelData = new ArrayList<>();
 
+        // 각 단계는 DB에서 현재 상태만 저장되므로, 누적 합계로 계산해야 100% 초과를 막을 수 있음.
+        // ex) DOCUMENT로 진행하면 APPLIED에서 빠지기 때문에 documentPass / applied 가 100% 초과 가능.
+        int total          = sc.getApplied() + sc.getDocumentPass() + sc.getFirstInterview()
+                           + sc.getSecondInterview() + sc.getThirdInterview()
+                           + sc.getPassed() + sc.getFailed();
+        int docAndAbove    = sc.getDocumentPass() + sc.getFirstInterview()
+                           + sc.getSecondInterview() + sc.getThirdInterview()
+                           + sc.getPassed() + sc.getFailed();
+        int firstAndAbove  = sc.getFirstInterview() + sc.getSecondInterview()
+                           + sc.getThirdInterview() + sc.getPassed() + sc.getFailed();
+        int secondAndAbove = sc.getSecondInterview() + sc.getThirdInterview()
+                           + sc.getPassed() + sc.getFailed();
+        int thirdAndAbove  = sc.getThirdInterview() + sc.getPassed() + sc.getFailed();
+        int passed         = sc.getPassed();
+
         addFunnel(funnelData, "이력서 제출", "서류 합격",
                 "#9da3b8", "#ffd166",
-                sc.getApplied(), sc.getDocumentPass());
+                total, docAndAbove);
 
         addFunnel(funnelData, "서류 합격", "1차 면접",
                 "#ffd166", "#4ecdc4",
-                sc.getDocumentPass(), sc.getFirstInterview());
+                docAndAbove, firstAndAbove);
 
         addFunnel(funnelData, "1차 면접", "2차 면접",
                 "#4ecdc4", "#5b7cf8",
-                sc.getFirstInterview(), sc.getSecondInterview());
+                firstAndAbove, secondAndAbove);
 
         addFunnel(funnelData, "2차 면접", "3차 면접",
                 "#5b7cf8", "#8b6ef5",
-                sc.getSecondInterview(), sc.getThirdInterview());
+                secondAndAbove, thirdAndAbove);
 
         addFunnel(funnelData, "3차 면접", "합격",
                 "#8b6ef5", "#56e39f",
-                sc.getThirdInterview(), sc.getPassed());
+                thirdAndAbove, passed);
 
         return funnelData;
     }
@@ -126,9 +141,15 @@ public class DashboardDAO {
         map.put("toLabel", toLabel);
         map.put("fromColor", fromColor);
         map.put("toColor", toColor);
-        // from이 0이면 0% 처리 (나누기 0 방지)
-        int pct = (from == 0) ? 0 : (int) Math.round((double) to / from * 100);
-        map.put("pct", pct);
+        if (from == 0) {
+            // 분모가 0이면 데이터 없음 → JSP에서 "-" 표시
+            map.put("pct", 0);
+            map.put("noData", true);
+        } else {
+            int pct = (int) Math.round((double) to / from * 100);
+            map.put("pct", Math.min(pct, 100)); // 누적 오차로 인한 100% 초과 안전 처리
+            map.put("noData", false);
+        }
         list.add(map);
     }
 
