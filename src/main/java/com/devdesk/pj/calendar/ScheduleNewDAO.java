@@ -363,9 +363,9 @@ public class ScheduleNewDAO {
                     // [설정 포인트] 얼마 동안의 구글 일정을 긁어올 것인가?
                     // 서버 무리를 방지하기 위해, 초반엔 12시간, 발표 땐 1분(60,000ms)으로 변경하세요.
                     // ==============================================================
-//                    long timeWindowMillis = 24 * 60 * 60 * 1000L; // 현재 세팅: 12시간
+                    long timeWindowMillis = 24 * 60 * 60 * 1000L; // 현재 세팅: 12시간
                     // 서버가 꺼져있던 시간 대비해 확인하는 코드입니다
-                    long timeWindowMillis = 60 * 1000L; // 발표 시연용 세팅: 1분 (나중에 바꿔주세요)
+//                    long timeWindowMillis = 60 * 1000L; // 발표 시연용 세팅: 1분 (나중에 바꿔주세요)
 
                     com.google.api.client.util.DateTime updatedMin =
                             new com.google.api.client.util.DateTime(System.currentTimeMillis() - timeWindowMillis);
